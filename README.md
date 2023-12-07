@@ -1,2 +1,2 @@
 # My programs
- Тук се намират програми, които аз съм си измислил.
+ Here is the programs that I have invented.
