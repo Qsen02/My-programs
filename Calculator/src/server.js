@@ -42,7 +42,7 @@ app.get("/standartCalculator.html", (req, res) => {
 });
 app.get("/info.html", (req, res) => {
     console.log("Потребител е влязъл в информация");
-    let infoPage = infoLoad('<div class="container"><div class="content"><h1>Здравейте!<h1></div><div class="content"><p>Тук ще намерите информация за двата калкулатора.</p></div><div class="button" ><button type="button" id="binaryCalc">Как да използвам двоичен калкулатор?</button></div><div class="button" ><button type="button" id="standartCalc">Как да използвам стандартен калкулатор?</button></div><script src="/public/js/info.js"></script><div class="content"><input type="text" id="answer"></div></div>');
+    let infoPage = infoLoad('<div class="container"><div class="content"><h1>Здравейте!<h1></div><div class="content"><p>Тук ще намерите информация за двата калкулатора.</p></div><div class="button"><button type="button" id="binaryCalc">Как да използвам двоичен калкулатор?</button></div><div class="button"><button type="button" id="standartCalc">Как да използвам стандартен калкулатор?</button></div><script src="/public/js/info.js"></script><div class="content"><textarea type="text" id="answer"></textarea></div</div>');
     res.send(infoPage);
 });
 app.listen(3000);
