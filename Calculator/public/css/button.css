@@ -9,3 +9,36 @@ button a {
     text-decoration: none;
     color: black;
 }
+
+#info {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+    display: flex;
+    text-decoration: none;
+}
+
+#answer {
+    width: 500px;
+    height: 50px;
+    margin: 30px;
+}
+
+#binaryCalc {
+    margin: -10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 30%;
+    font-size: 8pt;
+}
+
+#standartCalc {
+    margin: -10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 30%;
+    font-size: 8pt;
+}
