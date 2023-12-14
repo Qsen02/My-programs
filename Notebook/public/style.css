@@ -1,0 +1,40 @@
+.container {
+    margin: auto;
+    padding: auto;
+    border: solid 2px black;
+    background-color: rgb(126, 230, 196);
+    width: 500px;
+    height: auto;
+}
+
+.content {
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
+textarea {
+    border-radius: 15px;
+    width: 300px;
+    height: 75px;
+    font-size: 10pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    height: 30px;
+    background-color: azure;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: red;
+}

@@ -1,0 +1,13 @@
+<div class="container">
+   <div class="content">
+       <h1>Бележник</h1>
+   </div>
+   <div class="content">
+       <button type="button"><a href="CreateNote.html">Нова бележка</a></button>
+   </div>
+   <div class="content">
+        {{#each notes}}
+        <textarea type="text">{{description}}</textarea>
+        {{/each}}
+    </div>
+</div>
