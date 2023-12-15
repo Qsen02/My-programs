@@ -4,8 +4,9 @@
     border: solid black 2px;
     text-align: center;
     width: 700px;
-    margin: 100px 550px;
-    padding: 10px;
+    margin: auto;
+    padding: auto;
+    height: auto;
 }
 
 .content {
