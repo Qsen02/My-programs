@@ -15,11 +15,11 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 app.get("/Chronometer.html", (req, res) => {
-    console.log("Потребител е поселит хронометър");
+    console.log("Потребител е посетил хронометър");
     res.render("Chronometer");
 });
 app.get("/Timer.html", (req, res) => {
-    console.log("Потребител е поселит таймер");
+    console.log("Потребител е посетил таймер");
     res.render("Timer");
 });
 app.listen(3000);
