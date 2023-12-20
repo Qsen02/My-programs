@@ -21,24 +21,15 @@ button a {
     text-decoration: none;
 }
 
-#answer {
-    width: 500px;
-    height: 100px;
-    margin: 30px;
+details {
+    text-align: left;
 }
 
-#binaryCalc {
-    margin: -10px;
-    width: 80px;
-    height: 80px;
-    border-radius: 30%;
-    font-size: 8pt;
+.details {
+    background-color: azure;
+    font-size: 12pt;
 }
 
-#standartCalc {
-    margin: -10px;
-    width: 80px;
-    height: 80px;
-    border-radius: 30%;
-    font-size: 8pt;
+summary:hover {
+    color: red;
 }
