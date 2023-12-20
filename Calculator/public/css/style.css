@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 .container {
     background-color: lightgray;
     border-radius: 10%;
