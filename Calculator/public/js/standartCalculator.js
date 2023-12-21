@@ -15,11 +15,11 @@ document.getElementById("calc").onclick = function calculation() {
         document.getElementById("result1").value = num1 + num2;
     } else if (operator == "-" || operator == "минус" || operator == "minus") {
         document.getElementById("result1").value = num1 - num2;
-    } else if (operator == "*" || operator == "умножение" || operator == "multiplication") {
+    } else if (operator == "*" || operator.includes("умно") || operator.includes("multi")) {
         document.getElementById("result1").value = num1 * num2;
-    } else if (operator == "/" || operator == "деление" || operator == "division") {
+    } else if (operator == "/" || operator.includes("дел") || operator.includes("divi")) {
         document.getElementById("result1").value = num1 / num2;
-    } else if (operator == "^" || operator == "степен" || operator == "pow") {
+    } else if (operator == "^" || operator == "степен" || operator.includes("pow")) {
         document.getElementById("result1").value = Math.pow(num1, num2);
     } else {
         document.getElementById("result1").value = "Невалиден оператор!";
