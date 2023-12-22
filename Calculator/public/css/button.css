@@ -30,6 +30,6 @@ details {
     font-size: 12pt;
 }
 
-summary:hover {
+summary:active {
     color: red;
 }
