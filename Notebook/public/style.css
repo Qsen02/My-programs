@@ -7,7 +7,7 @@ body {
     padding: auto;
     border: solid 2px black;
     background-color: rgb(126, 230, 196);
-    width: 500px;
+    width: 400px;
     height: auto;
 }
 
@@ -28,6 +28,8 @@ textarea {
 button {
     height: 30px;
     background-color: azure;
+    margin-right: 30px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -41,4 +43,19 @@ a {
 
 a:hover {
     color: red;
+}
+
+#button {
+    background-color: red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+
+input {
+    display: block;
+    width: 350px;
+    height: 30px;
+    margin: 15px;
+    border-radius: 30px;
 }

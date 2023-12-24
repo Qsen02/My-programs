@@ -8,7 +8,9 @@ function load() {
 function save(data) {
     fs.writeFileSync("./views/notes.json", JSON.stringify(data));
 }
+
+
 module.exports = {
     load,
-    save
+    save,
 };
