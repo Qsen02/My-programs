@@ -9,3 +9,5 @@ Features:
 -You can write notes.
 
 -You can storing your notes.
+
+-You can delete notes.
