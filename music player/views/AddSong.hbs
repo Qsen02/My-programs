@@ -1,0 +1,35 @@
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/addSong" method="post" class="addForm">
+            <h1>Add your song</h1>
+            <div class="add">
+                <input type="file" name="image" id="image">
+                <label for="image">Add image</label>
+            </div>
+            <div class="add">
+                <input type="file" name="audio" id="audio">
+                 <label for="audio">Add audio</label>
+            </div>
+            <button type="submit">Add</button>
+        </form>
+    </main>
+    <footer>
+        <nav class="navbar-footer">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+                <li>
+                    <p>&copy; All rights reserved</p>
+                </li>
+            </ul>
+        </nav>
+    </footer>

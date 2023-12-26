@@ -1,0 +1,39 @@
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+            </ul>
+        </nav>
+        <div class="title">
+            <h1>Welcome! There are your songs.</h1>
+            <button type="button"><a href="addDirectory">add songs</a></button>
+        </div>
+    </header>
+    <main>
+        <section class="songs">
+      {{#each songs}}
+                 <details class="curSong">
+                        <summary>{{name}}</summary>
+                        <img src='/public/songsAndImg/alternative1.png'>
+                        <h3>{{name}}</h3>
+                        <audio controls>
+                   <source src="/public/only songs/{{name}}" type="audio/mpeg">
+                   </audio>
+                   </details>
+                {{/each}}
+        </section>
+    </main>
+    <footer>
+        <nav class="navbar-footer">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+                <li>
+                    <p>&copy; All rights reserved</p>
+                </li>
+            </ul>
+        </nav>
+    </footer>

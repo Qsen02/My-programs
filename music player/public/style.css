@@ -1,0 +1,352 @@
+body {
+    margin: 0;
+    background-color: rgb(72, 72, 72);
+}
+
+
+/*header*/
+
+.navbar {
+    padding: 5px;
+    background-color: red;
+    width: auto;
+    margin: auto;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.navbar ul li img {
+    width: 70px;
+    display: inline-block;
+    margin: -20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 22pt;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 15px;
+}
+
+.navbar ul li a:hover {
+    color: lightgray;
+}
+
+.title {
+    display: block;
+    margin: 15px;
+}
+
+.title h1 {
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title button {
+    display: block;
+    margin: 0 auto;
+}
+
+
+/*main*/
+
+.songs {
+    margin: 0 auto;
+    background-color: grey;
+    width: 650px;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.songs div {
+    background-color: rgb(98, 97, 97);
+    border: solid black 1px;
+    border-radius: 30px;
+}
+
+.songs ul li {
+    display: block;
+    text-align: center;
+}
+
+details {
+    border: solid black 1px;
+    border-radius: 30px;
+    background-color: rgb(98, 97, 97);
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+details:active {
+    color: lightgray;
+}
+
+audio {
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+}
+
+h3 {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+
+/*footer*/
+
+footer {
+    background-color: black;
+}
+
+.navbar-footer {
+    padding: 5px;
+    background-color: black;
+    width: auto;
+    margin: auto;
+}
+
+.navbar-footer ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.navbar-footer ul li img {
+    width: 70px;
+    display: inline-block;
+    margin: -20px;
+}
+
+.navbar-footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 22pt;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 15px;
+}
+
+.navbar-footer ul li a:hover {
+    color: lightgray;
+}
+
+.navbar-footer ul li p {
+    color: white;
+    font-size: 12pt;
+    text-align: right;
+    width: 1400px;
+}
+
+
+/*playlists.html*/
+
+button,
+.button button {
+    background-color: red;
+    border: solid black 1px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 14pt;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+button a,
+.button button a {
+    color: white;
+    text-decoration: none;
+    font-size: 14pt;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.button button:hover {
+    background-color: brown;
+}
+
+button:hover {
+    background-color: brown;
+}
+
+button a:hover {
+    color: lightgray;
+}
+
+.button button a:hover {
+    color: lightgray;
+}
+
+.songs details {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.songs details:active {
+    color: lightgray;
+}
+
+.curSong {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    background-color: rgb(39, 38, 38);
+}
+
+.curSong:active {
+    color: lightgray;
+}
+
+
+/*Create.html*/
+
+form {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(150, 149, 149);
+    text-align: center;
+    padding: 10px;
+    width: 700px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.addSong {
+    display: block;
+}
+
+.addSong input,
+button {
+    display: inline-block;
+    margin: 30px;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+
+/*addSong.html*/
+
+.addForm {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(150, 149, 149);
+    text-align: center;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add {
+    margin: 15px;
+}
+
+.add label {
+    font-size: 16pt;
+    color: white;
+    border: solid 1px black;
+    border-radius: 20px;
+    background-color: red;
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+}
+
+.add input {
+    display: none;
+    width: 300px;
+}
+
+.add label:hover {
+    background-color: brown;
+    color: lightgrey;
+}
+
+
+/*cancel*/
+
+.cancel {
+    margin: 0 auto;
+    background-color: grey;
+    width: 400px;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*delete*/
+
+.deleteButton {
+    color: white;
+    margin: 0 auto;
+    display: block;
+    width: 500px;
+}
+
+.deleteButton button {
+    display: inline-block;
+    margin: 15px 30px;
+}
+
+
+/*addDirectory*/
+
+.directory input {
+    display: none;
+}
+
+.directory label {
+    background-color: red;
+    color: white;
+    border: solid 1px black;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.directory label:hover {
+    background-color: brown;
+    color: lightgray;
+}

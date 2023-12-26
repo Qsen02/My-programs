@@ -1,0 +1,44 @@
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/create" method="post">
+            <h1>Create playlist</h1>
+            <div class="addSong">
+                <input type="text" placeholder="write playlist name" name="playlistName">
+                <button type="button"><a href="addSong">add song</a></button>
+            </div>
+            <div class="songs">
+                {{#each songs}}
+                 <details>
+                        <summary>{{audio}}</summary>
+                        <img src="/public/songsAndImg/{{image}}" onerror="this.onerror=null; this.src='/public/songsAndImg/alternative1.png'">
+                        <h3>{{audio}}</h3>
+                        <audio controls>
+                   <source src="/public/songsAndImg/{{audio}}" type="audio/mpeg">
+                   </audio>
+                   </details>
+                {{/each}}
+            </div>
+            <button type="submit">Create</button>
+            <button type="button"><a href="cancel">Cancel</a></button>
+        </form>
+    </main>
+    <footer>
+        <nav class="navbar-footer">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+                <li>
+                    <p>&copy; All rights reserved</p>
+                </li>
+            </ul>
+        </nav>
+    </footer>

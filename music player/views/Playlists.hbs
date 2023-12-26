@@ -1,0 +1,48 @@
+<header>
+        <nav class="navbar">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+            </ul>
+        </nav>
+        <div class="title">
+            <h1>There are your playlists.</h1>
+        </div>
+        <div class="deleteButton">
+            <button><a href="create">create playlist</a></button>
+            <button><a href="delete">delete playlist</a></button>
+        </div>
+
+    </header>
+    <main>
+        <section class="songs">
+            {{#each playlists}}
+            <details>
+                <summary>{{playlistName}}</summary>
+                  {{#each songs}}
+                 <details class="curSong">
+                        <summary>{{audio}}</summary>
+                        <img src="/public/songsAndImg/{{image}}" onerror="this.onerror=null; this.src='/public/songsAndImg/alternative1.png'">
+                        <h3>{{audio}}</h3>
+                        <audio controls>
+                   <source src="/public/songsAndImg/{{audio}}" type="audio/mpeg">
+                   </audio>
+                   </details>
+                {{/each}}
+            </details>
+            {{/each}}
+        </section>
+    </main>
+    <footer>
+        <nav class="navbar-footer">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="home">songs</a></li>
+                <li><a href="playlists">playlists</a></li>
+                <li>
+                    <p>&copy; All rights reserved</p>
+                </li>
+            </ul>
+        </nav>
+    </footer>
