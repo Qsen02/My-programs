@@ -2,7 +2,7 @@ Music player
 
 Summary:
 
-Mucic player created with hadlebars, express js server and css.
+Mucic player created with handlebars, express js server , javaScript and css.
 
 Features:
 
