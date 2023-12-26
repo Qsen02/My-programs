@@ -202,13 +202,14 @@ button a:hover {
 .songs details {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(98, 97, 97);
 }
 
 .songs details:active {
     color: lightgray;
 }
 
-.curSong {
+.songs .curSong {
     color: white;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -216,7 +217,7 @@ button a:hover {
     background-color: rgb(39, 38, 38);
 }
 
-.curSong:active {
+.songs .curSong:active {
     color: lightgray;
 }
 
