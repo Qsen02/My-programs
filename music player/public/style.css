@@ -38,7 +38,7 @@ body {
 
 .title {
     display: block;
-    margin: 15px;
+    margin: 0 auto;
 }
 
 .title h1 {
@@ -47,9 +47,15 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.title button {
-    display: block;
+.button {
     margin: 0 auto;
+    width: 600px;
+}
+
+.button div {
+    display: inline-block;
+    margin-right: 150px;
+    margin-left: 10px;
 }
 
 
@@ -350,4 +356,21 @@ input {
 .directory label:hover {
     background-color: brown;
     color: lightgray;
+}
+
+
+/*deleteAllSong*/
+
+.deleteAllSongs {
+    margin: 0 auto;
+    background-color: grey;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.deleteAllSongs button {
+    display: block;
+    margin: 0 auto;
 }

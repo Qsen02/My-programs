@@ -56,6 +56,14 @@ app.get("/delete", (req, res) => {
 app.get("/addDirectory", (req, res) => {
     res.render("addDirectory");
 });
+app.get("/deleteAllsongs", (req, res) => {
+    console.log("Someone delete all songs.");
+    let deleteSongs = [];
+    let songs = loadJson();
+    songs = deleteSongs;
+    saveHome(songs);
+    res.render("deleteAllSongs");
+});
 app.post("/addDirectory", (req, res) => {
     console.log("Someone added new directory with songs");
     let songs = req.body.songDirectory;
