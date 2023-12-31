@@ -4,6 +4,18 @@
                 <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
                 <li><a href="home">songs</a></li>
                 <li><a href="playlists">playlists</a></li>
+            <li>    
+            <div>
+                <a href="confirmLogOut">log out</a>
+            </div>
+            </li>
+            <li>
+            {{#each curClient}}
+            <div>
+                <h3>{{username}}</h3>
+            </div>
+            {{/each}}
+            </li>
             </ul>
         </nav>
         <div class="title">
@@ -13,7 +25,6 @@
             <button><a href="create">create playlist</a></button>
             <button><a href="delete">delete playlist</a></button>
         </div>
-
     </header>
     <main>
         <section class="songs">

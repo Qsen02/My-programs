@@ -15,70 +15,113 @@ app.set("view engine", ".hbs");
 let { loadSong, saveSong } = require("./models/songs.js");
 let { loadPlaylist, savePlaylist } = require("./models/playlists.js");
 let { loadJson, saveHome } = require("./models/home.js");
+let { loadClients, saveClients } = require("./models/sign in.js");
+let { loadProfile, saveProfile } = require("./models/log in.js");
 
 app.get("/", (req, res) => {
-    let songs = loadJson();
-    res.render("Home", {
-        songs
-    });
+    res.render("input");
 });
 app.get("/home", (req, res) => {
     let songs = loadJson();
+    let curClient = loadProfile();
     res.render("Home", {
-        songs
+        songs,
+        curClient
     });
 });
 app.get("/playlists", (req, res) => {
     let playlists = loadPlaylist();
+    let curClient = loadProfile();
     res.render("Playlists", {
-        playlists
+        playlists,
+        curClient
     });
 });
 app.get("/create", (req, res) => {
     let songs = loadSong();
+    let curClient = loadProfile();
     res.render("Create", {
-        songs
+        songs,
+        curClient
     });
 });
 app.get("/addSong", (req, res) => {
-    res.render("AddSong");
+    let curClient = loadProfile();
+    res.render("AddSong", {
+        curClient
+    });
 });
 app.get("/cancel", (req, res) => {
-    console.log("Someone cancel the creation of playlist");
-    res.render("cancel");
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} cancel the creation of playlist.`);
+    res.render("cancel", {
+        curClient
+    });
     let songs = loadSong();
     songs = [];
     saveSong(songs);
 });
 app.get("/delete", (req, res) => {
-    res.render("delete");
+    let curClient = loadProfile();
+    res.render("delete", {
+        curClient
+    });
 });
 app.get("/addDirectory", (req, res) => {
-    res.render("addDirectory");
+    let curClient = loadProfile();
+    res.render("addDirectory", {
+        curClient
+    });
 });
 app.get("/deleteAllsongs", (req, res) => {
-    console.log("Someone delete all songs.");
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} delete all songs.`)
     let deleteSongs = [];
     let songs = loadJson();
     songs = deleteSongs;
     saveHome(songs);
-    res.render("deleteAllSongs");
+    res.render("deleteAllSongs", {
+        curClient
+    });
+});
+app.get("/signIn", (req, res) => {
+    res.render("signIn");
+});
+app.get("/logIn", (req, res) => {
+    res.render("logIn");
+});
+app.get("/error", (req, res) => {
+    res.render("error");
+});
+app.get("/confirmLogOut", (req, res) => {
+    let logOut = [];
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} has logged out`);
+    curClient = logOut;
+    saveProfile(curClient);
+    res.render("confirmLogOut");
 });
 app.post("/addDirectory", (req, res) => {
-    console.log("Someone added new directory with songs");
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} added new directory with songs.`);
     let songs = req.body.songDirectory;
     for (let song of songs) {
-        let curSong = {
-            name: song
+        if (song.includes("mp3") || song.includes("flac") || song.includes("mp2") || song.includes("mpeg") || song.includes("mpe")) {
+            let curSong = {
+                name: song
+            }
+            let allSongs = loadJson();
+            allSongs.push(curSong);
+            saveHome(allSongs);
+        } else {
+            continue;
         }
-        let allSongs = loadJson();
-        allSongs.push(curSong);
-        saveHome(allSongs);
     }
     res.redirect("/home");
 });
 app.post("/addSong", (req, res) => {
-    console.log(`Someone added song with name ${req.body.audio}`);
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} added song with name ${req.body.audio}`);
     console.log(req.body);
     let newSong = {
         image: req.body.image,
@@ -90,7 +133,8 @@ app.post("/addSong", (req, res) => {
     res.redirect("/create");
 });
 app.post("/create", (req, res) => {
-    console.log(`Someone created a playlist with name ${req.body.playlistName}`);
+    let curClient = loadProfile();
+    console.log(`${curClient[0].username} created a playlist with name ${req.body.playlistName}`);
     console.log(req.body);
     let allSongs = [];
     let newPlaylist = {
@@ -104,6 +148,7 @@ app.post("/create", (req, res) => {
     res.redirect("/playlists")
 });
 app.post("/delete", (req, res) => {
+    let curClient = loadProfile();
     let name = req.body.deletePlaylist;
     let playlists = loadPlaylist();
     for (let i = 0; i < playlists.length; i++) {
@@ -112,8 +157,40 @@ app.post("/delete", (req, res) => {
             playlists.splice(i, 1);
         }
     }
-    console.log(`Someone delete playlist with name: ${name}`);
+    console.log(`${curClient[0].username} delete playlist with name: ${name}`);
     savePlaylist(playlists);
     res.redirect("/playlists");
+});
+app.post("/signIn", (req, res) => {
+    console.log(`You have new client registered with username:${req.body.username} password:${req.body.password}`);
+    let client = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    let clients = loadClients();
+    clients.push(client);
+    saveClients(clients);
+    res.redirect("/");
+});
+app.post("/logIn", (req, res) => {
+    let client = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    let clients = loadClients();
+    let curClient = loadProfile();
+    for (let account of clients) {
+        if (client.username == account.username) {
+            if (client.password == account.password) {
+                curClient.push(client);
+                saveProfile(curClient);
+                console.log(`${curClient[0].username} logged in his profile!`);
+                res.redirect("/home");
+            } else {
+                res.redirect("/error");
+            }
+        }
+    }
+    res.redirect("/error");
 })
 app.listen(3000);

@@ -4,17 +4,36 @@
                 <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
                 <li><a href="home">songs</a></li>
                 <li><a href="playlists">playlists</a></li>
+            <li>    
+            <div>
+                <a href="confirmLogOut">log out</a>
+            </div>
+            </li>
+            <li>
+            {{#each curClient}}
+            <div>
+                <h3>{{username}}</h3>
+            </div>
+            {{/each}}
+            </li>
             </ul>
         </nav>
         <div class="title">
             <h1>Welcome! There are your songs.</h1>
+        </div>
+        <div class="button">
+            <div>
             <button type="button"><a href="addDirectory">add songs</a></button>
+            </div>
+            <div>
+            <button type="button"><a href="deleteAllSongs">delete all songs</a></button>
+            </div>
         </div>
     </header>
     <main>
         <section class="songs">
       {{#each songs}}
-                 <details class="curSong">
+                 <details>
                         <summary>{{name}}</summary>
                         <img src='/public/songsAndImg/alternative1.png'>
                         <h3>{{name}}</h3>

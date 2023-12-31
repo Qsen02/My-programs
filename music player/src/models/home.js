@@ -11,5 +11,5 @@ function saveHome(data) {
 
 module.exports = {
     loadJson,
-    saveHome
+    saveHome,
 }

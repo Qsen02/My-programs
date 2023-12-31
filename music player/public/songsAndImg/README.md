@@ -1,1 +1,0 @@
-Here you can add audio and image files for creating the playlists.

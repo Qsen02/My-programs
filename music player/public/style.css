@@ -58,6 +58,27 @@ body {
     margin-left: 10px;
 }
 
+.navbar li div {
+    display: inline-block;
+}
+
+.navbar li div a {
+    text-decoration: none;
+    color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    font-size: 16pt;
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 7px;
+    margin-left: 1200px;
+}
+
+.navbar li div a:hover {
+    color: lightgray;
+    background-color: white;
+}
+
 
 /*main*/
 
@@ -373,4 +394,53 @@ input {
 .deleteAllSongs button {
     display: block;
     margin: 0 auto;
+}
+
+
+/*input*/
+
+.input {
+    display: block;
+    margin: 0 auto;
+    background-color: grey;
+    padding: 10px;
+    width: 400px;
+}
+
+.input div {
+    margin: 0 auto;
+}
+
+.input div button {
+    display: inline-block;
+    margin-left: 75px;
+}
+
+
+/*sign in*/
+
+.sign-in {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(150, 149, 149);
+    text-align: center;
+    padding: 10px;
+    width: 700px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sign-in input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.sign-in button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
 }
