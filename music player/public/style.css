@@ -444,3 +444,8 @@ input {
     margin: 0 auto;
     margin-bottom: 15px;
 }
+
+#icon {
+    color: white;
+    font-size: 30px;
+}
