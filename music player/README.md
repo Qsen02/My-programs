@@ -13,3 +13,5 @@ Features:
 -You can delete playlists if you want.
 
 -When you create playlist you can choose audio file and image (not necessary) for current song in the playlist.
+
+-You can create your own account.
