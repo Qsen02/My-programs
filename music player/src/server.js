@@ -101,6 +101,12 @@ app.get("/confirmLogOut", (req, res) => {
     saveProfile(curClient);
     res.render("confirmLogOut");
 });
+app.get("/dublicatedSong", (req, res) => {
+    res.render("dublicatedSong");
+})
+app.get("/dublicatedPlaylist", (req, res) => {
+    res.render("dublicatedPlaylist");
+})
 app.post("/addDirectory", (req, res) => {
     let curClient = loadProfile();
     console.log(`${curClient[0].username} added new directory with songs.`);
@@ -128,9 +134,21 @@ app.post("/addSong", (req, res) => {
         audio: req.body.audio
     }
     let songs = loadSong();
-    songs.push(newSong);
-    saveSong(songs);
-    res.redirect("/create");
+    if (songs.length == 0) {
+        songs.push(newSong);
+        saveSong(songs);
+        res.redirect("/create");
+    } else {
+        for (let song of songs) {
+            if (newSong.audio == song.audio) {
+                res.redirect("/dublicatedSong");
+            } else {
+                songs.push(newSong);
+                saveSong(songs);
+                res.redirect("/create");
+            }
+        }
+    }
 });
 app.post("/create", (req, res) => {
     let curClient = loadProfile();
@@ -142,10 +160,23 @@ app.post("/create", (req, res) => {
         songs: loadSong()
     };
     let playlists = loadPlaylist();
-    playlists.push(newPlaylist);
-    savePlaylist(playlists);
+    if (playlists.length == 0) {
+        playlists.push(newPlaylist);
+        savePlaylist(playlists);
+        res.redirect("/playlists");
+    } else {
+        for (let playlist of playlists) {
+            if (newPlaylist.playlistName == playlist.playlistName) {
+                res.redirect("dublicatedPlaylist");
+                break;
+            } else {
+                playlists.push(newPlaylist);
+                savePlaylist(playlists);
+                res.redirect("/playlists");
+            }
+        }
+    }
     saveSong(allSongs);
-    res.redirect("/playlists")
 });
 app.post("/delete", (req, res) => {
     let curClient = loadProfile();
