@@ -32,7 +32,6 @@ function start() {
 
     function enemyFill() {
         let enemyFiller = changeFiller();
-        checkForWin(enemyFiller);
         let index = Math.floor(Math.random() * 8);
         while (squareArray[index].textContent != "") {
             let count = 0
@@ -47,6 +46,7 @@ function start() {
             index = Math.floor(Math.random() * 8);
         }
         setInterval(() => { squareArray[index].textContent = enemyFiller }, 1000);
+        setInterval(() => { checkForWin(enemyFiller) }, 2000);
     }
 
     function checkForWin(filler) {
