@@ -4,7 +4,7 @@ function convert() {
     let input = document.getElementById("binaryNum")
     let bitwiseNum = input.value;
     let result = document.getElementById("result2");
-    if (/[2-9]+/.test(bitwiseNum)) {
+    if (/[2-9a-zA-Z]+/.test(bitwiseNum)) {
         result.value = "Въведенето число не е двоично";
     } else {
         let pow = 0;
