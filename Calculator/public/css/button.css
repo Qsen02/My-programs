@@ -3,6 +3,7 @@
     height: 50px;
     margin: 5px 25px;
     display: inline-block;
+    cursor: pointer;
 }
 
 button a {
@@ -23,6 +24,7 @@ button a {
 
 details {
     text-align: left;
+    cursor: pointer;
 }
 
 .details {

@@ -1,7 +1,11 @@
-document.getElementById("convert").onclick = function() {
-    let bitwiseNum = document.getElementById("binaryNum").value;
+document.getElementById("convert").addEventListener("click", convert);
+
+function convert() {
+    let input = document.getElementById("binaryNum")
+    let bitwiseNum = input.value;
+    let result = document.getElementById("result2");
     if (/[2-9]+/.test(bitwiseNum)) {
-        document.getElementById("result2").value = "Въведенето число не е двоично";
+        result.value = "Въведенето число не е двоично";
     } else {
         let pow = 0;
         let decimalNum = 0;
@@ -10,7 +14,8 @@ document.getElementById("convert").onclick = function() {
             decimalNum += curElement * Math.pow(2, pow);
             pow++;
         }
-        document.getElementById("result2").value = decimalNum;
+        result.value = decimalNum;
+        input.value = "";
     }
 
 }
