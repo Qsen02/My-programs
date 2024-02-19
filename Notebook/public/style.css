@@ -45,13 +45,6 @@ a:hover {
     color: red;
 }
 
-#button {
-    background-color: red;
-    border-radius: 50%;
-    height: 25px;
-    width: 25px;
-}
-
 input {
     display: block;
     width: 350px;

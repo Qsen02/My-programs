@@ -22,8 +22,7 @@ app.get("/CreateNote.html", (req, res) => {
     res.render("createNote");
 });
 app.post("/CreateNote.html", (req, res) => {
-    console.log("Потребител създаде бележка");
-    console.log(req.body);
+    console.log(`Потребител създаде бележка: "${req.body.description}"`);
     let newNote = {
         description: req.body.description
     };
@@ -46,7 +45,7 @@ app.post("/delete.html", (req, res) => {
         }
     }
     save(notes);
-    console.log(`Потребител изтри бележка: ${deleteNote}`);
+    console.log(`Потребител изтри бележка: "${deleteNote}"`);
     res.redirect("/");
 });
 app.listen(2000);
