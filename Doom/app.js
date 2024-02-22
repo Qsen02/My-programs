@@ -10,7 +10,7 @@ function loading() {
     const playerSpeed = 10;
     const demonSpeed = 5;
     const bulletSpeed = 15;
-    const demonBulletSpeed = 10;
+    const demonBulletSpeed = 12;
     let doomSlayerLife = [];
     let demonDir = 1;
     let controls = {};
@@ -67,7 +67,7 @@ function loading() {
         doomSlayerLife.push({ x: lifeCoord.x - 40 * i, y: lifeCoord.y });
     }
 
-    setInterval(demonAttacking, 1000);
+    setInterval(demonAttacking, 800);
     setInterval(render, 16);
 
     function render() {
@@ -97,10 +97,10 @@ function loading() {
         }
         if (curDemonBullet.alive) {
             curDemonBullet.y += demonBulletSpeed;
+            drawDemonBullet(curDemonBullet.x, curDemonBullet.y);
             if (curDemonBullet.y > 800) {
                 curDemonBullet.alive = false;
             }
-            drawDemonBullet(curDemonBullet.x, curDemonBullet.y);
         }
         const demonRight = Math.max(...demons.filter(el => el.alive).map(el => el.x));
         const demonLeft = Math.min(...demons.filter(el => el.alive).map(el => el.x));
