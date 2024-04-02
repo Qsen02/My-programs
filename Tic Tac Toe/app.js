@@ -27,6 +27,8 @@ function start() {
     function fill(event) {
         event.target.textContent = filler;
         checkForWin(filler);
+        buttonX.disabled = true;
+        buttonO.disabled = true;
         enemyFill();
     }
 
@@ -45,8 +47,8 @@ function start() {
             }
             index = Math.floor(Math.random() * 8);
         }
-        setInterval(() => { squareArray[index].textContent = enemyFiller }, 1000);
-        setInterval(() => { checkForWin(enemyFiller) }, 2000);
+        setInterval(() => squareArray[index].textContent = enemyFiller, 1000);
+        setInterval(() => checkForWin(enemyFiller), 2000);
     }
 
     function checkForWin(filler) {
@@ -97,6 +99,8 @@ function start() {
         divEl.appendChild(newGameBtn);
         bodyRef.appendChild(divEl);
         newGameBtn.addEventListener("click", () => {
+            buttonX.disabled = true;
+            buttonO.disabled = true;
             location.reload();
         })
     }
