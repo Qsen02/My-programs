@@ -27,6 +27,7 @@ body {
     display: grid;
     grid-template-columns: auto auto auto;
     margin: 0 auto;
+    border: solid 3px #00c8ff;
 }
 
 .content {
