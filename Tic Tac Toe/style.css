@@ -1,5 +1,54 @@
 body {
     margin: 0;
+    background-color: rgb(26, 25, 25);
+}
+
+@keyframes gradient {
+    0% {
+        border-color: #8000ff;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: #8000ff;
+    }
+}
+
+@keyframes background-gradient {
+    0% {
+        background-color: #8000ff;
+    }
+    50% {
+        background-color: blue;
+    }
+    100% {
+        background-color: #8000ff;
+    }
+}
+
+@keyframes background-gradient-1 {
+    0% {
+        background-color: purple;
+    }
+    50% {
+        background-color: blue;
+    }
+    100% {
+        background-color: purple;
+    }
+}
+
+@keyframes color-gradient {
+    0% {
+        color: #8000ff;
+    }
+    50% {
+        color: blue;
+    }
+    100% {
+        color: #8000ff;
+    }
 }
 
 .main {
@@ -12,14 +61,14 @@ body {
 .main h1 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    color: #00c8ff;
+    color: #8000ff;
     display: block;
 }
 
 .main label {
     text-align: center;
     display: block;
-    color: #00c8ff;
+    color: #8000ff;
     font-size: 20pt;
 }
 
@@ -30,10 +79,11 @@ body {
 }
 
 .content {
-    border: solid 3px #00c8ff;
+    border: solid 3px;
+    animation: gradient 3s infinite;
     width: 162px;
     height: 95px;
-    color: #00c8ff;
+    color: #8000ff;
     text-align: center;
     font-size: 50pt;
     font-family: Arial, Helvetica, sans-serif;
@@ -47,31 +97,31 @@ body {
 
 .inactive {
     margin-left: 80px;
-    background-color: #00c8ff;
     color: white;
     border-radius: 10px;
-    border: solid 1px #00c8ff;
+    border: solid 1px #8000ff;
     width: 50px;
     height: 30px;
     font-size: 15pt;
     margin-right: 90px;
+    animation: background-gradient 3s infinite;
 }
 
 .active {
     background-color: white;
-    color: #00c8ff;
+    animation: color-gradient 3s infinite;
 }
 
 .new-game-button {
-    background-color: white;
-    color: #00c8ff;
+    color: white;
     border-radius: 10px;
-    border: solid 1px white;
+    border: solid 1px #8000ff;
     width: 70px;
     height: 40px;
     font-size: 12pt;
     text-align: center;
     margin-left: 210px;
+    animation: background-gradient-1 3s infinite;
 }
 
 .new-main {
@@ -79,6 +129,6 @@ body {
     width: 500px;
     height: 100px;
     display: block;
-    background-color: #00c8ff;
+    background-color: #8000ff;
     padding: 20px;
 }
