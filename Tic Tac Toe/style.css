@@ -97,19 +97,19 @@ body {
 
 .inactive {
     margin-left: 80px;
-    color: white;
     border-radius: 10px;
-    border: solid 1px #8000ff;
     width: 50px;
     height: 30px;
     font-size: 15pt;
     margin-right: 90px;
-    animation: background-gradient 3s infinite;
+    border: solid 1px #8000ff;
+    background-color: rgb(26, 25, 25);
+    animation: color-gradient 3s infinite;
 }
 
 .active {
-    background-color: white;
-    animation: color-gradient 3s infinite;
+    color: white;
+    animation: background-gradient 3s infinite;
 }
 
 .new-game-button {

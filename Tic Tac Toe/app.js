@@ -37,8 +37,10 @@ function start() {
         bot = "X";
     }
 
-
     function fill(event) {
+        if (event.target.textContent == player || event.target.textContent == bot) {
+            return;
+        }
         const divId = event.target.dataset.id;
         orinalgBoard[divId] = player;
         event.target.textContent = player;
