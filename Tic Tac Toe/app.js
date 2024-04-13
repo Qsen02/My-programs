@@ -51,19 +51,12 @@ function start() {
         setInterval(() => checkForWin(bot), 1000);
     }
 
-    function checkForWin(filler) {
-        if ((squareArray[0].textContent == filler && squareArray[1].textContent == filler && squareArray[2].textContent == filler) ||
-            (squareArray[3].textContent == filler && squareArray[4].textContent == filler && squareArray[5].textContent == filler) ||
-            (squareArray[6].textContent == filler && squareArray[7].textContent == filler && squareArray[8].textContent == filler)) {
-            win(filler);
-        } else if ((squareArray[0].textContent == filler && squareArray[3].textContent == filler && squareArray[6].textContent == filler) ||
-            (squareArray[1].textContent == filler && squareArray[4].textContent == filler && squareArray[7].textContent == filler) ||
-            (squareArray[2].textContent == filler && squareArray[5].textContent == filler && squareArray[8].textContent == filler)) {
-            win(filler);
-        } else if (squareArray[0].textContent == filler && squareArray[4].textContent == filler && squareArray[8].textContent == filler) {
-            win(filler);
-        } else if (squareArray[2].textContent == filler && squareArray[4].textContent == filler && squareArray[6].textContent == filler) {
-            win(filler);
+    function checkForWin(player) {
+        for (let combo of winCombos) {
+            let isWin = combo.filter(el => squareArray[el].textContent == player);
+            if (isWin.length == 3) {
+                win(player);
+            }
         }
         let count = 0;
         for (let square of squareArray) {
@@ -85,8 +78,10 @@ function start() {
         let h3El = document.createElement("h3");
         if (filler == "Draw") {
             h3El.textContent = `${filler}!`;
-        } else {
-            h3El.textContent = `Player ${filler} wins!`;
+        } else if (filler == bot) {
+            h3El.textContent = `You lost :(`;
+        } else if (filler == player) {
+            h3El.textContent = `Congratulations! You win!`;
         }
         h3El.display = "block";
         h3El.style.fontFamily = "Arial, Helvetica, sans-serif";
@@ -124,9 +119,6 @@ function start() {
 
     function minimax(newBoard, curPlayer) {
         var availSpots = emptySquares();
-        console.log(newBoard);
-        console.log(availSpots);
-
         if (checkWin(newBoard, player)) {
             return { score: -10 };
         } else if (checkWin(newBoard, bot)) {
@@ -151,7 +143,6 @@ function start() {
             newBoard[availSpots[i]] = move.index;
             moves.push(move);
         }
-
         var bestMove;
         if (curPlayer === bot) {
             var bestScore = -10000;
@@ -170,7 +161,6 @@ function start() {
                 }
             }
         }
-
         return moves[bestMove];
     }
 }
