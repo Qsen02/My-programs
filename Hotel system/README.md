@@ -4,7 +4,7 @@ Summary: This is a system for reservation rooms in hotel by users.
 
 Features:
 
--Users can register or login if they have rsgitration.
+-Users can register or login if they have registration.
 
 -Available admins and they can only change in the database.Admins can add new rooms and see who is reserve current room.
 
