@@ -1,0 +1,344 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: rgb(13, 187, 246);
+    display: block;
+    padding: 5px;
+}
+
+.navbar .nav-content {
+    display: inline-block;
+    margin: 10px;
+}
+
+.navbar .nav-content a {
+    text-decoration: none;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+.navbar .nav-content a:hover {
+    color: rgb(121, 216, 243);
+}
+
+.container {
+    background-color: rgb(3, 73, 158);
+    width: 600px;
+    border-radius: 30px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    background-color: rgb(66, 62, 62);
+    color: aliceblue;
+    padding: 5px;
+    display: block;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer ul li {
+    margin: 20px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+footer ul li a:hover {
+    color: lightgrey;
+}
+
+.carosel {
+    display: block;
+    margin: 0 auto;
+    width: 800px;
+    height: auto;
+    margin-top: 30px;
+}
+
+.carosel img {
+    width: 650px;
+    height: 500px;
+    display: none;
+    margin-left: 70px;
+}
+
+.carosel button {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: gray;
+    color: aliceblue;
+    font-size: 20pt;
+    position: fixed;
+    margin-left: 5px;
+    bottom: 445px
+}
+
+.carosel button:hover {
+    background-color: rgb(158, 149, 149);
+}
+
+.form {
+    display: block;
+    width: 500px;
+    height: auto;
+    background-color: rgb(3, 73, 158);
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.form label {
+    display: block;
+    margin: 10px;
+}
+
+.form input {
+    display: block;
+    width: 300px;
+    border-radius: 30px;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.form input::placeholder {
+    text-align: center;
+}
+
+.form textarea {
+    display: block;
+    width: 300px;
+    border-radius: 30px;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.form textarea::placeholder {
+    text-align: center;
+}
+
+.form button {
+    margin: 20px;
+    border-radius: 20px;
+    background-color: red;
+    height: 50px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    color: yellow;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.form #deposit {
+    background-color: red;
+    height: 50px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.form #deposit::placeholder {
+    text-align: center;
+    color: yellow;
+    font-size: 25pt;
+}
+
+.room-container {
+    display: block;
+    margin: 0 auto;
+    width: 1400px;
+    height: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.room-container h1 {
+    color: black;
+}
+
+.room-content-conatiner {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom: 100px;
+}
+
+.room-content {
+    margin: 20px;
+    background-color: rgb(3, 73, 158);
+    padding: 10px;
+}
+
+.room-content h1 {
+    color: aliceblue;
+}
+
+.room-content img {
+    width: 400px;
+    height: 300px;
+}
+
+.room-content button {
+    margin: 10px;
+    border-radius: 20px;
+    background-color: red;
+    height: 50px;
+    padding: 10px;
+}
+
+.room-content button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.room-content button a {
+    text-decoration: none;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+.room-content p {
+    color: aliceblue;
+    font-size: 18pt;
+}
+
+.search {
+    display: block;
+    margin: 0 auto;
+}
+
+.search input {
+    width: 400px;
+    height: 50px;
+    border-radius: 30px;
+    margin: 10px;
+}
+
+.search input::placeholder {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+}
+
+.search button {
+    margin: 10px;
+    border-radius: 20px;
+    background-color: red;
+    height: 50px;
+    padding: 10px;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+.search button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.details {
+    display: block;
+    margin: 0 auto;
+    width: 1000px;
+    height: auto;
+    background-color: rgb(3, 73, 158);
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18pt;
+    text-align: center;
+    margin-bottom: 120px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.details img {
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.details button {
+    margin: 20px;
+    border-radius: 20px;
+    background-color: red;
+    height: 50px;
+    padding: 10px;
+    width: 110px;
+}
+
+.details button:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.details button a {
+    text-decoration: none;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+.reserved {
+    color: red;
+}
+
+.notreserved {
+    color: rgb(17, 191, 17);
+}
+
+.noresult {
+    font-size: 30pt;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.notification {
+    display: none;
+    margin-left: 750px;
+    background-color: red;
+    color: yellow;
+    border: black solid 1px;
+    width: 400px;
+    height: 85px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    position: fixed;
+    top: 0;
+    text-align: center;
+}
+
+.notification button {
+    border: solid 2px yellow;
+    background-color: red;
+    width: 50px;
+    height: 25px;
+}
+
+.notification button:hover {
+    color: yellow;
+}
