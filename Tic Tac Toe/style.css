@@ -100,7 +100,7 @@ body {
     border-radius: 10px;
     width: 50px;
     height: 30px;
-    font-size: 15pt;
+    font-size: 13pt;
     margin-right: 90px;
     border: solid 1px #8000ff;
     background-color: rgb(26, 25, 25);
@@ -131,4 +131,9 @@ body {
     display: block;
     background-color: #8000ff;
     padding: 20px;
+}
+
+.difficult {
+    display: inline-block;
+    margin: 20px;
 }

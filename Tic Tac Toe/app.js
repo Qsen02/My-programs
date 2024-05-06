@@ -17,11 +17,26 @@ function start() {
     squareArray.forEach(el => el.addEventListener("click", fill));
     let buttonX = document.getElementById("X");
     let buttonO = document.getElementById("O");
+    const easyBtn = document.getElementById("easy");
+    const hardBtn = document.getElementById("hard");
     buttonX.classList.add("active");
     buttonX.addEventListener("click", changeX);
     buttonO.addEventListener("click", changeO);
+    easyBtn.addEventListener("click", changeEasy);
+    hardBtn.addEventListener("click", changeHard);
+    easyBtn.classList.add("active");
     let player = "X";
     let bot = "O";
+
+    function changeEasy() {
+        easyBtn.classList.add("active");
+        hardBtn.classList.remove("active");
+    }
+
+    function changeHard() {
+        easyBtn.classList.remove("active");
+        hardBtn.classList.add("active");
+    }
 
     function changeX() {
         buttonX.classList.add("active");
@@ -41,16 +56,37 @@ function start() {
         if (event.target.textContent == player || event.target.textContent == bot) {
             return;
         }
-        const divId = event.target.dataset.id;
-        orinalgBoard[divId] = player;
-        event.target.textContent = player;
-        checkForWin(player);
-        buttonX.disabled = true;
-        buttonO.disabled = true;
-        let botMove = minimax(orinalgBoard, bot).index
-        orinalgBoard[botMove] = bot;
-        setInterval(() => squareArray[botMove].textContent = bot, 500);
-        setInterval(() => checkForWin(bot), 1000);
+        if (hardBtn.classList.contains("active")) {
+            const divId = event.target.dataset.id;
+            orinalgBoard[divId] = player;
+            event.target.textContent = player;
+            checkForWin(player);
+            buttonX.disabled = true;
+            buttonO.disabled = true;
+            easyBtn.disabled = true;
+            hardBtn.disabled = true;
+            let botMove = minimax(orinalgBoard, bot).index
+            orinalgBoard[botMove] = bot;
+            setInterval(() => squareArray[botMove].textContent = bot, 500);
+            setInterval(() => checkForWin(bot), 1000);
+        } else {
+            event.target.textContent = player;
+            checkForWin(player);
+            buttonX.disabled = true;
+            buttonO.disabled = true;
+            easyBtn.disabled = true;
+            hardBtn.disabled = true;
+            easyBotFill();
+            setInterval(() => checkForWin(bot), 1000);
+        }
+    }
+
+    function easyBotFill() {
+        let index = Math.floor(Math.random() * 8);
+        while (squareArray[index].textContent) {
+            index = Math.floor(Math.random() * 8);
+        }
+        setInterval(() => squareArray[index].textContent = bot, 500);
     }
 
     function checkForWin(player) {
@@ -98,6 +134,8 @@ function start() {
         newGameBtn.addEventListener("click", () => {
             buttonX.disabled = false;
             buttonO.disabled = false;
+            easyBtn.disabled = false;
+            hardBtn.disabled = false;
             location.reload();
         })
     }
