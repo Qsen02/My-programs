@@ -342,3 +342,21 @@ footer ul li a:hover {
 .notification button:hover {
     color: yellow;
 }
+
+.profile {
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    margin-left: 1700px;
+    margin-top: -75px;
+}
+
+.profile i {
+    font-size: 20pt;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.profile p {
+    display: inline-block;
+}

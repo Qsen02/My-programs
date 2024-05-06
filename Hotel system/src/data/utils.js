@@ -15,18 +15,22 @@ export function updateNav() {
     const user = document.getElementById("user");
     const admin = document.getElementById("admin");
     let userData = getUserData();
+    const profileText = document.querySelector(".profile p");
     if (!userData) {
         guest.style.display = "block";
         user.style.display = "none";
         admin.style.display = "none";
+        profileText.textContent = "Guest";
     } else if (userData.IsAdmin) {
         guest.style.display = "none";
         user.style.display = "none";
         admin.style.display = "block";
+        profileText.textContent = userData.username;
     } else {
         guest.style.display = "none";
         user.style.display = "block";
         admin.style.display = "none";
+        profileText.textContent = userData.username;
     }
 }
 
