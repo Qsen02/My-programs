@@ -36,8 +36,11 @@ export async function showReservationForm(ctx) {
         let peopleCount = Number(formData.get("peopleCount"));
         let days = Number(formData.get("days"));
         const pRef = document.querySelector(".form p");
-        if (!peopleCount || !days || !pRef.textContent) {
+        if (!peopleCount || !days) {
             return notify("All fields required!");
+        }
+        if (!pRef.textContent) {
+            return notify("You must calculate first!");
         }
         let totalPrice = Number(pRef.textContent.split("Total price: ")[1]);
         let userDeposit = Number(userData.deposit);
