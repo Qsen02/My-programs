@@ -1,7 +1,7 @@
 import { page, html } from "./middlewear.js";
 import { updateProduct } from "../data/dataService.js";
 import { updateUser } from "../data/userService.js";
-import { getUserData, setUserData, clearUserData } from "../data/utils.js";
+import { getUserData, setUserData, clearUserData, notify, onConfirm } from "../data/utils.js";
 
 export async function showProfile(ctx) {
     let userData = getUserData();
@@ -28,33 +28,34 @@ export async function showProfile(ctx) {
         </div>
     </div>`
     ctx.render(load(userData));
-    async function onRefuse(event){
-        let confirming=confirm("Сигурни ли сте че искате да откажете поръчката?");
-        if(confirming){
-        let product=event.target.parentElement.children[1];
-        let curProduct=userData.orders.find(el=>el.name==product.textContent);
-        curProduct.isOrdered=false;
-        await updateProduct(curProduct.objectId,{
-            name:curProduct.name,
-            price:curProduct.price,
-            imgUrl:curProduct.imgUrl,
-            isOrdered:curProduct.isOrdered,
-            characteristics:curProduct.characteristics,
-            category:curProduct.category
-        });
-        let index=userData.orders.indexOf(curProduct);
-        userData.orders.splice(index,1);
-        await updateUser(userData.objectId,{
-            username:userData.username,
-            email:userData.email,
-            password:userData.password,
-            objectId:userData.objectId,
-            orders:userData.orders
-        });
-        clearUserData();
-        setUserData(userData);
-        alert("Поръчката е успешно отказана!");
-        page.redirect("/profile");
-    }
+     function onRefuse(event){
+        onConfirm("Сигурни ли сте че искате да откажете поръчката?").then(async (confirming)=>{
+            if(confirming){
+                let product=event.target.parentElement.children[1];
+                let curProduct=userData.orders.find(el=>el.name==product.textContent);
+                curProduct.isOrdered=false;
+                await updateProduct(curProduct.objectId,{
+                    name:curProduct.name,
+                    price:curProduct.price,
+                    imgUrl:curProduct.imgUrl,
+                    isOrdered:curProduct.isOrdered,
+                    characteristics:curProduct.characteristics,
+                    category:curProduct.category
+                });
+                let index=userData.orders.indexOf(curProduct);
+                userData.orders.splice(index,1);
+                await updateUser(userData.objectId,{
+                    username:userData.username,
+                    email:userData.email,
+                    password:userData.password,
+                    objectId:userData.objectId,
+                    orders:userData.orders
+                });
+                clearUserData();
+                setUserData(userData);
+                notify("Поръчката е успешно отказана!","green");
+                page.redirect("/profile");
+            }
+        })
     }
 }

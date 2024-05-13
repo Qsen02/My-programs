@@ -1,6 +1,6 @@
 import { getProductById, updateProduct } from "../data/dataService.js";
 import { updateUser } from "../data/userService.js";
-import { getUserData, clearUserData, setUserData } from "../data/utils.js";
+import { getUserData, clearUserData, setUserData, notify, onConfirm } from "../data/utils.js";
 import { html, page } from "./middlewear.js";
 
 export async function showDetails(ctx) {
@@ -27,31 +27,32 @@ export async function showDetails(ctx) {
     </div>`;
     ctx.render(load(data));
 
-    async function onBought(){
-        let confirming=confirm("Сигурни ли сте че искате да поръчате?");
-        if(confirming){
-        await updateProduct(id,{
-            name:data.name,
-            price:data.price,
-            objectId:id,
-            isOrdered:true,
-            imgUrl:data.imgUrl,
-            category:data.category,
-            characteristics:data.characteristics
+    function onBought(){
+        onConfirm("Сигурни ли сте че искате да поръчате този продукт?").then(async (confirming)=>{
+            if(confirming){
+                await updateProduct(id,{
+                    name:data.name,
+                    price:data.price,
+                    objectId:id,
+                    isOrdered:true,
+                    imgUrl:data.imgUrl,
+                    category:data.category,
+                    characteristics:data.characteristics
+                })
+                let newData=await getProductById(id);
+                userData.orders.push(newData);
+                await updateUser(userData.objectId,{
+                    username:userData.username,
+                    email:userData.email,
+                    password:userData.password,
+                    objectId:userData.objectId,
+                    orders:userData.orders,
+                    })
+                clearUserData();
+                setUserData(userData);
+                notify("Поръчката е направена успешно!","green");
+                page.redirect(`/catalog/${id}`);
+            }
         })
-        let newData=await getProductById(id);
-        userData.orders.push(newData);
-        await updateUser(userData.objectId,{
-            username:userData.username,
-            email:userData.email,
-            password:userData.password,
-            objectId:userData.objectId,
-            orders:userData.orders,
-            })
-        clearUserData();
-        setUserData(userData);
-        alert("Поръчката е направена успешно!");
-        page.redirect(`/catalog/${id}`);
-        }
     }
 }

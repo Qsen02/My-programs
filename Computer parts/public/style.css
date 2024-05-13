@@ -359,3 +359,80 @@ main h1 {
     display: block;
     border-bottom: 3px solid aliceblue;
 }
+
+.notification {
+    display: none;
+    position: fixed;
+    border: solid 2px black;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 250px;
+    height: 83px;
+    text-align: center;
+    border-radius: 30px;
+    margin: 0 auto;
+    top: 0;
+    left: 850px;
+}
+
+.notification button {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 70px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: rgb(214, 214, 35);
+    font-size: 12pt;
+    cursor: pointer;
+    bottom: 20px;
+}
+
+.notification button:hover {
+    background-color: yellow;
+}
+
+.notification p {
+    font-size: 14pt;
+    position: relative;
+    bottom: 25px
+}
+
+.confirm {
+    display: none;
+    position: fixed;
+    border: solid 2px black;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 250px;
+    height: 83px;
+    border-radius: 30px;
+    margin: 0 auto;
+    top: 0;
+    left: 850px;
+    background-color: orange;
+}
+
+.confirm button {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+    width: 70px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: rgb(214, 214, 35);
+    font-size: 12pt;
+    cursor: pointer;
+    bottom: 20px;
+    left: 55px;
+}
+
+.confirm button:hover {
+    background-color: yellow;
+}
+
+.confirm p {
+    font-size: 14pt;
+    position: relative;
+    bottom: 25px;
+}

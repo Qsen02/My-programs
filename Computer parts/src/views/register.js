@@ -1,4 +1,4 @@
-import { setUserData } from "../data/utils.js";
+import { setUserData, notify } from "../data/utils.js";
 import { register } from "../data/userService.js";
 import { html, page } from "./middlewear.js";
 
@@ -26,13 +26,13 @@ export function showRegisterForm(ctx) {
         let password = formData.get("password");
         let repass = formData.get("repass");
         if (!username || !email || !password || !repass) {
-            return alert("Всички полета трябва да са попълнени!");
+            return notify("Всички полета трябва да са попълнени!", "red");
         }
         if (password.length < 6) {
-            return alert("Паролата трябва да съдържа поне 6 символа!");
+            return notify("Паролата трябва да съдържа поне 6 символа!", "red");
         }
         if (password != repass) {
-            return alert("Паролите трябва да съвпадат!");
+            return notify("Паролите трябва да съвпадат!", "red");
         }
         let data = await register({ username, email, password });
         setUserData(data);

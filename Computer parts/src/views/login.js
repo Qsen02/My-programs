@@ -1,6 +1,6 @@
 import { login } from "../data/userService.js";
 import { page, html } from "./middlewear.js";
-import { setUserData } from "../data/utils.js";
+import { setUserData, notify } from "../data/utils.js";
 
 export function showLoginForm(ctx) {
     let load = () => html `
@@ -20,7 +20,7 @@ export function showLoginForm(ctx) {
         let username = formData.get("username");
         let password = formData.get("password");
         if (!username || !password) {
-            return alert("Всички полета трябва да са попълнени!");
+            return notify("Всички полета трябва да са попълнени!", "red");
         }
         let data = await login({ username, password });
         setUserData(data);
