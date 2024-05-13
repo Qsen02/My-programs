@@ -28,6 +28,8 @@ export async function showDetails(ctx) {
     ctx.render(load(data));
 
     async function onBought(){
+        let confirming=confirm("Сигурни ли сте че искате да поръчате?");
+        if(confirming){
         await updateProduct(id,{
             name:data.name,
             price:data.price,
@@ -50,5 +52,6 @@ export async function showDetails(ctx) {
         setUserData(userData);
         alert("Поръчката е направена успешно!");
         page.redirect(`/catalog/${id}`);
+        }
     }
 }

@@ -16,7 +16,10 @@ export async function showCatalog(ctx) {
             <a href="#">RAM памети</a>
             <a href="#">Хард дискове и ssd</a>
             <a href="#">Захранващи блокове</a>
-        </aside>`
+        </aside>
+        <div class="catalog">
+        </div>
+    </div>`
     :html`
     <h1>Всички налични продукти</h1>
     <div class="wrap">

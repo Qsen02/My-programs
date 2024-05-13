@@ -29,6 +29,8 @@ export async function showProfile(ctx) {
     </div>`
     ctx.render(load(userData));
     async function onRefuse(event){
+        let confirming=confirm("Сигурни ли сте че искате да откажете поръчката?");
+        if(confirming){
         let product=event.target.parentElement.children[1];
         let curProduct=userData.orders.find(el=>el.name==product.textContent);
         curProduct.isOrdered=false;
@@ -53,5 +55,6 @@ export async function showProfile(ctx) {
         setUserData(userData);
         alert("Поръчката е успешно отказана!");
         page.redirect("/profile");
+    }
     }
 }
