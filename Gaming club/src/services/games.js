@@ -13,6 +13,7 @@ async function createGame(data) {
         name: data.name,
         year: data.year,
         description: data.description,
+        image: data.image,
         creator: data.creator,
         category: data.category
     })
@@ -29,12 +30,12 @@ async function editGame(id, data) {
 }
 
 function searching(query) {
-    let results = Games.find({ name: query });
+    let results = Games.find({ name: RegExp(query) });
     return results;
 }
 
 async function checkGameId(id) {
-    let games = Games.find();
+    let games = await Games.find().lean();
     let isValid = games.find(el => el._id == id);
     return isValid;
 }

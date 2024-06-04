@@ -1,7 +1,8 @@
 form {
     display: block;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 120px;
     padding: 10px;
     width: 600px;
     height: auto;
@@ -72,4 +73,25 @@ form button:hover {
 .upload-wrapper span {
     display: inline-block;
     font-size: 12pt;
+}
+
+form .errorLabel {
+    color: red;
+}
+
+form .errorField {
+    border-bottom: red solid 1px;
+}
+
+.error {
+    display: block;
+    margin: 0 auto;
+    width: 220px;
+    height: 40px;
+    font-size: 18pt;
+    background-color: rgb(3, 194, 247);
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
 }

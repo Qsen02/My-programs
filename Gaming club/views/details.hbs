@@ -1,0 +1,18 @@
+{{#with game}}
+<div class="details">
+    <h1>{{name}}</h1>
+    <img src="{{image}}" alt="{{name}}">
+    <div class="category">
+        <p>Category: {{category}}</p>
+        <p>Year: {{year}}</p>
+        <p>Creator: {{creator}}</p>
+    </div>
+    <p>{{description}}</p>
+    <div class="buttons">
+        <button><a href="/games/edit/{{_id}}">Edit</a></button>
+        <button id="delete"><a href="/games/delete/{{_id}}">Delete</a></button>
+        <a href="#"><i class="fa-regular fa-heart"></i></a>
+        <p>{{likes}}</p>
+    </div>
+</div>
+{{/with}}

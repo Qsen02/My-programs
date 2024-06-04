@@ -1,0 +1,19 @@
+<h1>Search for games here</h1>
+<form action="/search" method="GET" class="search-form">
+    <input name="name" type="text" placeholder="Enter game name...">
+    <button type="submit">Search</button>
+</form>
+<div class="catalog-wrapper">
+    {{#if isEmpty}}
+     <h1>No results :(</h1>
+    {{else}}
+    {{#each games}}
+    <div class="catalog-content">
+        <img src="{{image}}" alt="{{name}}">
+        <h1>{{name}}</h1>
+        <h3>Category: {{category}}</h3>
+        <button><a href="/games/deails/{{_id}}">Details</a></button>
+    </div>
+    {{/each}}
+    {{/if}}
+</div>

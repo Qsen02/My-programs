@@ -19,10 +19,7 @@ let gamesSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    image: {
-        type: String,
-        require: true
-    },
+    image: String,
     likes: {
         type: Number,
         default: 0

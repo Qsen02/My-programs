@@ -1,6 +1,7 @@
 .details {
     display: block;
     margin: 0 auto;
+    margin-bottom: 100px;
     width: 800px;
     height: auto;
     margin-top: 30px;
@@ -15,7 +16,7 @@
 .details img {
     display: block;
     margin: 0 auto;
-    height: 400px;
+    height: 500px;
     width: 700px;
 }
 
