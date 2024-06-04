@@ -1,0 +1,25 @@
+[{
+        "name": "Doom Eternal",
+        "year": 2020,
+        "image": "/static/images/OIG1.HlZqCN.jfif",
+        "creator": "id Software",
+        "category": "First-person shooter",
+        "description": "Doom Eternal is a first-person shooter game that is the sequel to Doom (2016). Players once again take on the role of the Doom Slayer, battling the demonic forces of Hell across dimensions with an array of powerful weapons and abilities."
+    },
+    {
+        "name": "God of War",
+        "year": 2018,
+        "image": "/static/images/OIG2.rKdhTEdbp.jfif",
+        "creator": "Santa Monica Studio",
+        "category": "Action-adventure",
+        "description": "God of War is an action-adventure game that follows Kratos, a former Greek god, and his son Atreus, as they journey through the world of Norse gods and monsters in a quest for redemption and discovery."
+    },
+    {
+        "name": "Horizon: Zero Dawn",
+        "year": 2017,
+        "image": "/static/images/OIG4.jfif",
+        "creator": "Guerrilla Games",
+        "category": "Action role-playing",
+        "description": "Horizon: Zero Dawn is an action role-playing game set in a post-apocalyptic world where robotic creatures dominate the landscape. The game follows Aloy, a young hunter, as she seeks to uncover her past and the secrets of the ancient world."
+    }
+]

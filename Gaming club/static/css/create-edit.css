@@ -1,0 +1,75 @@
+form {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    width: 600px;
+    height: auto;
+    background-color: rgb(89, 86, 86);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: aliceblue;
+    font-size: 16pt;
+}
+
+form label {
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
+form input,
+form textarea {
+    width: 400px;
+    height: 50px;
+    border: none;
+    border-radius: 7px;
+    background-color: grey;
+    color: aliceblue;
+    font-size: 14pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgb(3, 194, 247);
+    color: aliceblue;
+    border: none;
+    font-size: 18pt;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: aqua;
+    color: white;
+}
+
+.upload {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-wrapper {
+    display: block;
+    width: 400px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.upload-wrapper button {
+    display: inline-block;
+}
+
+.upload-wrapper span {
+    display: inline-block;
+    font-size: 12pt;
+}

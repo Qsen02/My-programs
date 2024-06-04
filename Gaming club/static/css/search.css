@@ -1,0 +1,19 @@
+.search-form {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(48, 46, 46);
+    margin-bottom: 30px;
+}
+
+.search-form input {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.search-form button {
+    display: inline-block;
+}
+
+.search-form input::placeholder {
+    color: lightgray;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming club</title>
+    <script src="https://kit.fontawesome.com/2553465cd5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/upload.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/games/catalog">CATALOG</a></li>
+                <li><a href="/games/create">CREATE</a></li>
+                <li><a href="/search">SEARCH</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!--Home page-->
+        <div class="home">
+            <h1>Welcome to gaming club!</h1>
+            <img src="/static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg" alt="gaming">
+            <p>Here you can found most different and varied games!</p>
+        </div>
+        <!--Create page-->
+        <form method="post" enctype="multipart/form-data">
+            <h3>Here you can add game</h3>
+            <label>Name</label>
+            <input type="text" name="name">
+            <label>Category</label>
+            <input type="text" name="category">
+            <label>Year</label>
+            <input type="number" name="year">
+            <label>Image</label>
+            <div class="upload-wrapper">
+                <button type="button" id="file-upload-button">Upload</button>
+                <input type="file" name="image" class="upload" id="file-upload">
+                <span id="file-upload-text">Choose image</span>
+            </div>
+            <label>Creator</label>
+            <input type="text" name="creator">
+            <label>Description</label>
+            <textarea name="description"></textarea>
+            <button type="submit">Create</button>
+        </form>
+        <!--Edit page-->
+        <form method="post" enctype="multipart/form-data">
+            <h3>Here you can edit this game</h3>
+            <label>Name</label>
+            <input type="text" name="name">
+            <label>Category</label>
+            <input type="text" name="category">
+            <label>Year</label>
+            <input type="number" name="year">
+            <label>Image</label>
+            <div class="upload-wrapper">
+                <button type="button" id="file-upload-button">Upload</button>
+                <input type="file" name="image" class="upload" id="file-upload">
+                <span id="file-upload-text">Choose image</span>
+            </div>
+            <label>Creator</label>
+            <input type="text" name="creator">
+            <label>Description</label>
+            <textarea name="description"></textarea>
+            <button type="submit">Create</button>
+        </form>'
+        <!--catalog page-->
+        <h1>All available games</h1>
+        <div class="catalog-wrapper">
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>Doom Eternal</h1>
+                <h3>Category: shooter</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>God of War</h1>
+                <h3>Category: rpg</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>Horizon: Zero Down</h1>
+                <h3>Category: rpg</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+        </div>
+        <!--details page-->
+        <div class="details">
+            <h1>Doom Eternal</h1>
+            <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+            <div class="category">
+                <p>Category: shooter</p>
+                <p>Year: 2020</p>
+                <p>Creator: Mick Gordon</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, veniam! Sed itaque reiciendis quasi, consequatur hic enim minima, sint reprehenderit, culpa similique nemo distinctio ab. Sequi ratione dolores adipisci unde!</p>
+            <div class="buttons">
+                <button><a href="#">Edit</a></button>
+                <button id="delete"><a href="#">Delete</a></button>
+                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <p>0</p>
+            </div>
+        </div>
+        <!--delete page-->
+        <div class="delete-wrapper">
+            <h1>Are you sure?</h1>
+            <button><a href="#">Yes</a></button>
+            <button><a href="#">No</a></button>
+        </div>
+        <!--search page-->
+        <h1>Search for games here</h1>
+        <form method="get" class="search-form">
+            <input type="text" placeholder="Enter game name...">
+            <button type="submit">Search</button>
+        </form>
+        <div class="catalog-wrapper">
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>Doom Eternal</h1>
+                <h3>Category: shooter</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>God of War</h1>
+                <h3>Category: rpg</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+            <div class="catalog-content">
+                <img src="./static/images/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg">
+                <h1>Horizon: Zero Down</h1>
+                <h3>Category: rpg</h3>
+                <button><a href="#">Details</a></button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>@Gaming club</p>
+        </div>
+        <ul>
+            <li>
+                <i class="fa-brands fa-facebook"></i>
+                <a href="#">Facebook</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-instagram"></i>
+                <a href="#">Instagram</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-twitter"></i>
+                <a href="#">Twitter</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>

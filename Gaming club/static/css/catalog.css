@@ -1,0 +1,56 @@
+h1 {
+    text-align: center;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.catalog-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 1500px;
+    height: auto;
+    background-color: rgb(89, 86, 86);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.catalog-content {
+    display: block;
+    margin: 30px;
+    width: 400px;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: aliceblue;
+    background-color: grey;
+    padding: 20px;
+}
+
+.catalog-content img {
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    width: 300px;
+}
+
+.catalog-content button {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgb(3, 194, 247);
+    border: none;
+    font-size: 18pt;
+    cursor: pointer;
+}
+
+.catalog-content button:hover {
+    background-color: aqua;
+    color: white;
+}
+
+.catalog-content a {
+    text-decoration: none;
+    color: aliceblue;
+}
