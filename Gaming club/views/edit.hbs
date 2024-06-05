@@ -1,0 +1,27 @@
+{{#if errors}}
+<div class="error">
+    <p>All fields required!</p>
+</div>
+{{/if}}
+{{#with game}}
+<form method="post" enctype="multipart/form-data">
+    <h3>Here you can edit this game</h3>
+    <label>Name</label>
+    <input type="text" name="name" value="{{name}}">
+    <label>Category</label>
+    <input type="text" name="category" value="{{category}}">
+    <label>Year</label>
+    <input type="number" name="year" value="{{year}}">
+    <label>Image</label>
+    <div class="upload-wrapper">
+        <button type="button" id="file-upload-button">Upload</button>
+        <input type="file" name="image" class="upload" id="file-upload" value="{{image}}">
+        <span id="file-upload-text">Choose image</span>
+    </div>
+    <label>Creator</label>
+    <input type="text" name="creator" value="{{creator}}">
+    <label>Description</label>
+    <textarea name="description">{{description}}</textarea>
+    <button type="submit">Edit</button>
+</form>
+{{/with}}
