@@ -1,18 +1,32 @@
-{{#with game}}
 <div class="details">
-    <h1>{{name}}</h1>
-    <img src="{{image}}" alt="{{name}}">
+    <h1>{{game.name}}</h1>
+    <img src="{{game.image}}" alt="{{game.name}}">
     <div class="category">
-        <p>Category: {{category}}</p>
-        <p>Year: {{year}}</p>
-        <p>Creator: {{creator}}</p>
+        <p>Category: {{game.category}}</p>
+        <p>Year: {{game.year}}</p>
+        <p>Creator: {{game.creator}}</p>
     </div>
-    <p>{{description}}</p>
+    <p>{{game.description}}</p>
+    {{#if game.isUser}}
+    {{#if game.isOwner}}
+    <div class="likes">
+        <i class="fa-solid fa-heart" id="creatorLikes"></i>
+        <p>{{game.likes}}</p>
+    </div>
     <div class="buttons">
-        <button><a href="/games/edit/{{_id}}">Edit</a></button>
-        <button id="delete"><a href="/games/delete/{{_id}}">Delete</a></button>
-        <a href="#"><i class="fa-regular fa-heart"></i></a>
-        <p>{{likes}}</p>
+        <button><a href="/games/edit/{{game._id}}">Edit</a></button>
+        <button id="delete"><a href="/games/delete/{{game._id}}">Delete</a></button>
     </div>
+    {{else}}
+    {{#if game.isLiked}}
+    <div class="likes">
+        <i class="fa-solid fa-heart" id="creatorLikes"></i>
+        <p>{{game.likes}}</p>
+    </div>
+    {{else}}
+    <a href="/games/{{game._id}}/like"><i class="fa-regular fa-heart"></i></a>
+    <p>{{game.likes}}</p>
+    {{/if}}
+    {{/if}}
+    {{/if}}
 </div>
-{{/with}}

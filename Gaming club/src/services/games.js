@@ -9,14 +9,15 @@ function getGameById(id) {
     return Games.findById(id);
 }
 
-async function createGame(data) {
+async function createGame(data, user) {
     let newGame = new Games({
         name: data.name,
         year: data.year,
         description: data.description,
         image: data.image,
         creator: data.creator,
-        category: data.category
+        category: data.category,
+        ownerId: user._id
     })
     await newGame.save();
     return newGame;
@@ -41,9 +42,11 @@ async function checkGameId(id) {
     return isValid;
 }
 
-async function liking(movieId, userId) {
-    await Games.findByIdAndUpdate(movieId, { $inc: likes });
-    await Users.findByIdAndUpdate(userId, { $push: { likedGames: movieId } });
+async function liking(gameId, userId) {
+    await Games.findByIdAndUpdate(gameId, { $inc: { likes: 1 } });
+    await Users.findByIdAndUpdate(userId, { $push: { likedGames: gameId } });
+    let user = await Users.findById(userId).lean();
+    return user;
 }
 
 module.exports = {

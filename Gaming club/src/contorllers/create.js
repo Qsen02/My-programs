@@ -6,6 +6,7 @@ async function showCreateForm(req, res) {
 
 async function onCreate(req, res) {
     let fields = req.body;
+    let user = req.user;
     let errors = {
         name: !fields.name,
         year: !fields.year,
@@ -28,7 +29,7 @@ async function onCreate(req, res) {
         res.render("create", { errors, game: req.body });
         return;
     }
-    await createGame({ name, year, description, category, creator, image: "\\" + imgPath });
+    await createGame({ name, year, description, category, creator, image: "\\" + imgPath }, user);
     res.redirect("/games/catalog");
 }
 
