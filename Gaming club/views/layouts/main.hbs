@@ -17,8 +17,14 @@
             <ul>
                 <li><a href="/">HOME</a></li>
                 <li><a href="/games/catalog">CATALOG</a></li>
-                <li><a href="/games/create">CREATE</a></li>
                 <li><a href="/games/search">SEARCH</a></li>
+                {{#if hasUser}}
+                <li><a href="/games/create">CREATE</a></li>
+                <li><a href="/logout">LOGOUT</a></li>
+                {{else}}
+                <li><a href="/login">LOGIN</a></li>
+                <li><a href="/register">REGISTER</a></li>
+                {{/if}}
             </ul>
         </nav>
     </header>

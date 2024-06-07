@@ -1,0 +1,15 @@
+{{#if error}}
+<div class="error">
+    <p>{{error}}</p>
+</div>
+{{/if}}
+<form method="post">
+    <h3>Here you can make your registration</h3>
+    <label>Username</label>
+    <input  type="text" name="username" value="{{fields.username}}">
+    <label>Password</label>
+    <input  type="password" name="password" value="{{fields.password}}">
+    <label>Repeat password</label>
+    <input  type="password" name="repass" value="{{fields.repass}}">
+    <button type="submit">Submit</button>
+</form>

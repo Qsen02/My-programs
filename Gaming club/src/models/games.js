@@ -28,6 +28,10 @@ let gamesSchema = new mongoose.Schema({
         type: String,
         require: true,
         maxLenght: 1000
+    },
+    ownerId: {
+        type: String,
+        require: true
     }
 });
 

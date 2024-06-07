@@ -87,7 +87,7 @@ form .errorField {
     display: block;
     margin: 0 auto;
     width: 220px;
-    height: 40px;
+    height: auto;
     font-size: 18pt;
     background-color: rgb(3, 194, 247);
     color: aliceblue;

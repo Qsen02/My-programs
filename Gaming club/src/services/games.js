@@ -1,4 +1,5 @@
 const { Games } = require("../models/games");
+const { Users } = require("../models/users");
 
 function getAllGames() {
     return Games.find();
@@ -40,6 +41,11 @@ async function checkGameId(id) {
     return isValid;
 }
 
+async function liking(movieId, userId) {
+    await Games.findByIdAndUpdate(movieId, { $inc: likes });
+    await Users.findByIdAndUpdate(userId, { $push: { likedGames: movieId } });
+}
+
 module.exports = {
     getAllGames,
     getGameById,
@@ -47,5 +53,6 @@ module.exports = {
     deleteGame,
     editGame,
     searching,
-    checkGameId
+    checkGameId,
+    liking
 }

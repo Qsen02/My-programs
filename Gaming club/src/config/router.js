@@ -6,6 +6,8 @@ const { showDetails } = require("../contorllers/details");
 const { showSearchForm, onSearch } = require("../contorllers/search");
 const { showDeleteForm, onDelete, onReject } = require("../contorllers/delete");
 const { showEditForm, onEdit } = require("../contorllers/edit");
+const { showRegisterForm, onRegister } = require("../contorllers/register");
+const { showLoginform, onLogin } = require("../contorllers/login");
 
 let router = Router();
 
@@ -21,6 +23,14 @@ router.get("/games/delete/:id/yes", onDelete);
 router.get("/games/delete/:id/no", onReject);
 router.get("/games/edit/:id", showEditForm);
 router.post("/games/edit/:id", upload.single("image"), onEdit);
+router.get("/register", showRegisterForm);
+router.post("/register", onRegister);
+router.get("/login", showLoginform);
+router.post("/login", onLogin);
+router.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/login");
+})
 router.get("*", (req, res) => {
     res.render("404");
 })
