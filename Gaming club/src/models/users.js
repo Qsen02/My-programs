@@ -8,10 +8,6 @@ let usersSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true
-    },
-    likedGames: {
-        type: [String],
-        default: []
     }
 })
 

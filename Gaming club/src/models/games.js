@@ -32,6 +32,10 @@ let gamesSchema = new mongoose.Schema({
     ownerId: {
         type: String,
         require: true
+    },
+    userLikes: {
+        type: [String],
+        default: []
     }
 });
 

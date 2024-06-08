@@ -11,7 +11,6 @@ async function showSearchForm(req, res) {
 
 async function onSearch(req, res) {
     let url = req.url.split("?")[1];
-    console.log(req);
     let query = url.split("=")[1].trim();
     let newQuery = query.replaceAll("+", " ");
     let games = await searching(newQuery).lean();

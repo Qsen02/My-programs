@@ -6,7 +6,6 @@ function setToken(user) {
     let playload = {
         _id: user._id,
         username: user.username,
-        likedGames: user.likedGames
     }
     let token = jwt.sign(playload, secret, { expiresIn: "3d" });
 

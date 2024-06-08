@@ -13,7 +13,7 @@ async function showDetails(req, res) {
     game.isOwner = user && user._id == game.ownerId;
     game.isLiked = false;
     if (user) {
-        game.isLiked = user.likedGames.includes(id);
+        game.isLiked = game.userLikes.includes(user._id);
     }
     res.render("details", { game });
 }

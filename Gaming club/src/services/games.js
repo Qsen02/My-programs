@@ -43,10 +43,7 @@ async function checkGameId(id) {
 }
 
 async function liking(gameId, userId) {
-    await Games.findByIdAndUpdate(gameId, { $inc: { likes: 1 } });
-    await Users.findByIdAndUpdate(userId, { $push: { likedGames: gameId } });
-    let user = await Users.findById(userId).lean();
-    return user;
+    await Games.findByIdAndUpdate(gameId, { $push: { userLikes: userId }, $inc: { likes: 1 } });
 }
 
 module.exports = {
