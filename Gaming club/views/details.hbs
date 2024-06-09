@@ -30,12 +30,8 @@
     {{/if}}
     {{/if}}
 </div>
+{{#if isHaveUser}}
 <div class="comments">
-    {{#if error}}
-    <div class="error">
-        <p>{{error}}</p>
-    </div>
-    {{/if}}
     <details>
         <summary>Comments:<span>{{commentCount}}</span></summary>
         <div class="comment-content">
@@ -47,11 +43,12 @@
             <h3>No comments yet, be the first one!</h3>
             {{else}}
             {{#each game.comments}}
-            <div {{#if isYourComment}}class="your-comment"{{/if}}>
-                <h3>{{username}}</h3>
+            <div {{#if isYourComment}}class="your-comment" {{/if}}>
+                <h3>{{#if isOwner}}<span>@Creator</span>{{/if}} {{username}}</h3>
                 <p>{{content}}</p>
             </div>
             {{/each}}
             {{/if}}
     </details>
 </div>
+{{/if}}

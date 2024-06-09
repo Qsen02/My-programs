@@ -1,5 +1,4 @@
 const { Games } = require("../models/games");
-const { Users } = require("../models/users");
 
 function getAllGames() {
     return Games.find();

@@ -1,7 +1,7 @@
 .details {
     display: block;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     width: 800px;
     height: auto;
     margin-top: 30px;
@@ -94,7 +94,8 @@
     margin: 0 auto;
     width: 850px;
     height: auto;
-    margin-bottom: 600px;
+    margin-top: -80px;
+    margin-bottom: 100px;
 }
 
 details {
@@ -147,7 +148,7 @@ details span {
     width: 770px;
     border-radius: 10px;
     background-color: rgb(89, 86, 86);
-    padding-bottom: 20px;
+    padding-bottom: 120px;
 }
 
 .comment-content div {
@@ -170,4 +171,8 @@ details span {
 
 .comment-content .your-comment {
     background-color: rgb(3, 194, 247);
+}
+
+.comment-content div h3 span {
+    color: rgb(166, 163, 163);
 }

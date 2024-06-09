@@ -1,4 +1,5 @@
 const { checkGameId, getGameById, comment } = require("../services/games");
+const { getUserById } = require("../services/users");
 
 async function showDetails(req, res) {
     let id = req.params.id;
@@ -13,21 +14,29 @@ async function showDetails(req, res) {
     game.isOwner = user && user._id == game.ownerId;
     game.isLiked = false;
     let isEmpty = false;
+    let isHaveUser = false;
+    let creatorName = await getUserById(game.ownerId).lean();
     if (user) {
         game.isLiked = game.userLikes.includes(user._id);
+        isHaveUser = true;
+        for (let comment of game.comments) {
+            if (creatorName.username == comment.username) {
+                comment.isOwner = true;
+            } else {
+                comment.isOwner = false;
+            }
+            if (user.username == comment.username) {
+                comment.isYourComment = true;
+            } else {
+                comment.isYourComment = false;
+            }
+        }
     }
     if (game.comments.length == 0) {
         isEmpty = true;
     }
-    for (let comment of game.comments) {
-        if (user.username == comment.username) {
-            comment.isYourComment = true;
-        } else {
-            comment.isYourComment = false;
-        }
-    }
     let commentCount = game.comments.length;
-    res.render("details", { game, isEmpty, commentCount });
+    res.render("details", { game, isEmpty, commentCount, isHaveUser });
 }
 
 async function onComment(req, res) {
@@ -46,20 +55,7 @@ async function onComment(req, res) {
         await comment(id, user.username, content);
         res.redirect(`/games/details/${id}`);
     } catch (err) {
-        let game = await getGameById(id).lean();
-        let isEmpty = false;
-        if (game.comments.length == 0) {
-            isEmpty = true;
-        }
-        for (let comment of game.comments) {
-            if (user.username == comment.username) {
-                comment.isYourComment = true;
-            } else {
-                comment.isYourComment = false;
-            }
-        }
-        let commentCount = game.comments.length;
-        res.render("details", { game, error: err.message, commentCount, isEmpty });
+        res.redirect(`/games/details/${id}`);
         return;
     }
 }

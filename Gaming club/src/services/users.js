@@ -26,7 +26,13 @@ async function login(username, password) {
     return user;
 }
 
+function getUserById(id) {
+    let user = Users.findById(id);
+    return user;
+}
+
 module.exports = {
     register,
-    login
+    login,
+    getUserById
 }
