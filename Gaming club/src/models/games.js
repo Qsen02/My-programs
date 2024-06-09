@@ -36,6 +36,10 @@ let gamesSchema = new mongoose.Schema({
     userLikes: {
         type: [String],
         default: []
+    },
+    comments: {
+        type: [Object],
+        default: []
     }
 });
 

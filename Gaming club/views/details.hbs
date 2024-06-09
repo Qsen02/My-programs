@@ -30,3 +30,28 @@
     {{/if}}
     {{/if}}
 </div>
+<div class="comments">
+    {{#if error}}
+    <div class="error">
+        <p>{{error}}</p>
+    </div>
+    {{/if}}
+    <details>
+        <summary>Comments:<span>{{commentCount}}</span></summary>
+        <div class="comment-content">
+            <form action="/details/{{game._id}}/comment" method="post">
+                <textarea name="content" placeholder="Write comment..."></textarea>
+                <button type="Submit">Submit</button>
+            </form>
+            {{#if isEmpty}}
+            <h3>No comments yet, be the first one!</h3>
+            {{else}}
+            {{#each game.comments}}
+            <div {{#if isYourComment}}class="your-comment"{{/if}}>
+                <h3>{{username}}</h3>
+                <p>{{content}}</p>
+            </div>
+            {{/each}}
+            {{/if}}
+    </details>
+</div>

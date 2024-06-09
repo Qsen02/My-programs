@@ -2,7 +2,7 @@ let { Router } = require("express");
 const { upload } = require("./multer");
 const { showHome, showCatalog } = require("../contorllers/home");
 const { showCreateForm, onCreate } = require("../contorllers/create");
-const { showDetails } = require("../contorllers/details");
+const { showDetails, onComment } = require("../contorllers/details");
 const { showSearchForm, onSearch } = require("../contorllers/search");
 const { showDeleteForm, onDelete, onReject } = require("../contorllers/delete");
 const { showEditForm, onEdit } = require("../contorllers/edit");
@@ -30,6 +30,7 @@ router.post("/register", isGuest(), onRegister);
 router.get("/login", isGuest(), showLoginform);
 router.post("/login", isGuest(), onLogin);
 router.get("/games/:id/like", onLike);
+router.post("/details/:id/comment", onComment);
 router.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.redirect("/login");

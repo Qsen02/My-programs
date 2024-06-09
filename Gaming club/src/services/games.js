@@ -46,6 +46,10 @@ async function liking(gameId, userId) {
     await Games.findByIdAndUpdate(gameId, { $push: { userLikes: userId }, $inc: { likes: 1 } });
 }
 
+async function comment(gameId, username, content) {
+    await Games.findByIdAndUpdate(gameId, { $push: { comments: { username, content } } });
+}
+
 module.exports = {
     getAllGames,
     getGameById,
@@ -54,5 +58,6 @@ module.exports = {
     editGame,
     searching,
     checkGameId,
-    liking
+    liking,
+    comment
 }
