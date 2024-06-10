@@ -5,7 +5,7 @@ function getAllGames() {
 }
 
 function getGameById(id) {
-    return Games.findById(id);
+    return Games.findById(id).populate("comments");
 }
 
 async function createGame(data, user) {

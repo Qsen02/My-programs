@@ -95,3 +95,10 @@ form .errorField {
     text-align: center;
     cursor: pointer;
 }
+
+.edit-comment input,
+.edit-comment button {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}

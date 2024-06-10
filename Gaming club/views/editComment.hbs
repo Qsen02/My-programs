@@ -1,0 +1,12 @@
+{{#if errors}}
+<div class="error">
+    <p>All fields required!</p>
+</div>
+{{/if}}
+<form method="post">
+    <h3>Edit your comment</h3>
+    <div class="edit-comment">
+    <input {{#if error}}class="errorField"{{/if}}type="text" name="content" value="{{content}}">
+    <button type="submit">Submit</button>
+    </div>
+</form>

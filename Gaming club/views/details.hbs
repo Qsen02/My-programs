@@ -1,5 +1,6 @@
 <div class="details">
     <h1>{{game.name}}</h1>
+    <p>Published by: {{creator}}</p>
     <img src="{{game.image}}" alt="{{game.name}}">
     <div class="category">
         <p>Category: {{game.category}}</p>
@@ -31,7 +32,7 @@
     {{/if}}
 </div>
 {{#if isHaveUser}}
-<div class="comments">
+<section class="comments">
     <details>
         <summary>Comments:<span>{{commentCount}}</span></summary>
         <div class="comment-content">
@@ -45,10 +46,14 @@
             {{#each game.comments}}
             <div {{#if isYourComment}}class="your-comment" {{/if}}>
                 <h3>{{#if isOwner}}<span>@Creator</span>{{/if}} {{username}}</h3>
+                {{#if isYourComment}}
+                <a href="/comment/{{_id}}/edit"><i class="fa-solid fa-square-pen"></i></a>
+                <a href="/comment/{{_id}}/delete"><i class="fa-solid fa-trash"></i></a>
+                {{/if}}
                 <p>{{content}}</p>
             </div>
             {{/each}}
             {{/if}}
     </details>
-</div>
+</section>
 {{/if}}

@@ -1,4 +1,5 @@
-const { checkGameId, getGameById, comment } = require("../services/games");
+const { addComment } = require("../services/comments");
+const { checkGameId, getGameById } = require("../services/games");
 const { getUserById } = require("../services/users");
 
 async function showDetails(req, res) {
@@ -15,12 +16,12 @@ async function showDetails(req, res) {
     game.isLiked = false;
     let isEmpty = false;
     let isHaveUser = false;
-    let creatorName = await getUserById(game.ownerId).lean();
+    let creator = await getUserById(game.ownerId).lean();
     if (user) {
         game.isLiked = game.userLikes.includes(user._id);
         isHaveUser = true;
         for (let comment of game.comments) {
-            if (creatorName.username == comment.username) {
+            if (creator.username == comment.username) {
                 comment.isOwner = true;
             } else {
                 comment.isOwner = false;
@@ -36,7 +37,7 @@ async function showDetails(req, res) {
         isEmpty = true;
     }
     let commentCount = game.comments.length;
-    res.render("details", { game, isEmpty, commentCount, isHaveUser });
+    res.render("details", { game, isEmpty, commentCount, isHaveUser, creator: creator.username });
 }
 
 async function onComment(req, res) {
@@ -52,7 +53,7 @@ async function onComment(req, res) {
         if (!content) {
             throw new Error("Field required!");
         }
-        await comment(id, user.username, content);
+        await addComment(user.username, content, id);
         res.redirect(`/games/details/${id}`);
     } catch (err) {
         res.redirect(`/games/details/${id}`);
