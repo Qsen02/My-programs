@@ -35,7 +35,7 @@ form button {
     display: block;
     margin: 0 auto;
     margin-top: 20px;
-    width: 100px;
+    width: auto;
     height: 50px;
     border-radius: 20px;
     background-color: rgb(3, 194, 247);

@@ -8,7 +8,7 @@ h1 {
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
-    width: 1500px;
+    width: 1300px;
     height: auto;
     background-color: rgb(89, 86, 86);
     padding: 20px;
@@ -19,7 +19,7 @@ h1 {
 .catalog-content {
     display: block;
     margin: 30px;
-    width: 400px;
+    width: auto;
     height: auto;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -35,10 +35,11 @@ h1 {
     width: 300px;
 }
 
-.catalog-content button {
+
+/* .catalog-content button {
     display: block;
     margin: 0 auto;
-    width: 100px;
+    width: auto;
     height: 50px;
     border-radius: 20px;
     background-color: rgb(3, 194, 247);
@@ -50,9 +51,24 @@ h1 {
 .catalog-content button:hover {
     background-color: aqua;
     color: white;
-}
+} */
 
 .catalog-content a {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(3, 194, 247);
+    border: none;
+    font-size: 18pt;
+    cursor: pointer;
     text-decoration: none;
     color: aliceblue;
+    padding-top: 10px;
+}
+
+.catalog-content a:hover {
+    background-color: aqua;
+    color: white;
 }
