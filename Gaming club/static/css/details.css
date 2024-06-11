@@ -11,6 +11,7 @@
     text-align: center;
     font-size: 16pt;
     font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 100px;
 }
 
 .details img {
@@ -32,11 +33,16 @@
 
 .buttons {
     display: inline-block;
+    margin: 0 auto;
+    width: 400px;
+    height: 50px;
+    margin-bottom: 30px;
 }
 
 .buttons button {
+    display: inline-block;
     margin-top: 20px;
-    margin-left: 100px;
+    margin-right: 30px;
     width: 100px;
     height: 50px;
     border-radius: 20px;
@@ -86,7 +92,9 @@
 }
 
 .likes {
-    display: inline-block;
+    position: absolute;
+    left: 700px;
+    bottom: -150px;
 }
 
 .comments {
@@ -191,4 +199,28 @@ details span {
 
 .comment-content div a i {
     font-size: 18pt;
+}
+
+.saves {
+    position: absolute;
+    bottom: -150px;
+    right: 700px;
+}
+
+.saves i {
+    display: block;
+    margin-left: 80px;
+    margin-bottom: -20px;
+}
+
+.saves p {
+    position: relative;
+    left: 40px;
+    top: 20px;
+}
+
+#owner-save {
+    display: block;
+    font-size: 24pt;
+    margin-bottom: -40px;
 }

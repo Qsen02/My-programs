@@ -18,6 +18,8 @@ async function showDetails(req, res) {
     let isHaveUser = false;
     let creator = await getUserById(game.ownerId).lean();
     if (user) {
+        game.isSave = game.saves.find(el => el == user._id);
+        game.savesCount = game.saves.length;
         game.isLiked = game.userLikes.includes(user._id);
         isHaveUser = true;
         for (let comment of game.comments) {

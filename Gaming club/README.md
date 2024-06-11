@@ -13,3 +13,5 @@ Features:
 -Users can like other articles expect their own.
 
 -Users can comment articles and edit or delete their own comment.
+
+-Users can save publications.

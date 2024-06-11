@@ -1,3 +1,4 @@
+const { Comments } = require("../models/comments");
 const { Games } = require("../models/games");
 
 function getAllGames() {
@@ -23,6 +24,10 @@ async function createGame(data, user) {
 }
 
 async function deleteGame(id) {
+    let game = await Games.findById(id).lean();
+    for (let comment of game.comments) {
+        await Comments.findByIdAndDelete(comment._id.toString());
+    }
     await Games.findByIdAndDelete(id);
 }
 
@@ -49,6 +54,10 @@ async function comment(gameId, username, content) {
     await Games.findByIdAndUpdate(gameId, { $push: { comments: { username, content } } });
 }
 
+async function saving(gameId, userId) {
+    await Games.findByIdAndUpdate(gameId, { $push: { saves: userId } });
+}
+
 module.exports = {
     getAllGames,
     getGameById,
@@ -58,5 +67,6 @@ module.exports = {
     searching,
     checkGameId,
     liking,
-    comment
+    comment,
+    saving
 }

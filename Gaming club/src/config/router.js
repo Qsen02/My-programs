@@ -9,9 +9,10 @@ const { showEditForm, onEdit } = require("../contorllers/edit");
 const { showRegisterForm, onRegister } = require("../contorllers/register");
 const { showLoginform, onLogin } = require("../contorllers/login");
 const { isGuest, isUser } = require("../middlewears/guards");
-const { onLike } = require("../contorllers/likes");
+const { onLike, onSave } = require("../contorllers/likes and saves");
 const { showDeleteCommentForm, onDeleteComment, onRefuseComment } = require("../contorllers/deleteComment");
 const { showEditCommentForm, onEditComment } = require("../contorllers/editComment");
+const { showSaves } = require("../contorllers/saves");
 
 let router = Router();
 
@@ -38,6 +39,8 @@ router.get("/comment/:id/delete/yes", onDeleteComment);
 router.get("/comment/:id/delete/no", onRefuseComment);
 router.get("/comment/:id/edit", showEditCommentForm);
 router.post("/comment/:id/edit", onEditComment);
+router.get("/games/:id/save", onSave);
+router.get("/saves", showSaves);
 router.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.redirect("/login");

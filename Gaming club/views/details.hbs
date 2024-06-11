@@ -18,6 +18,10 @@
         <button><a href="/games/edit/{{game._id}}">Edit</a></button>
         <button id="delete"><a href="/games/delete/{{game._id}}">Delete</a></button>
     </div>
+    <div class="saves">
+        <i class="fa-solid fa-bookmark" id="owner-save"></i>
+        <p>{{game.savesCount}}</p>
+    </div>
     {{else}}
     {{#if game.isLiked}}
     <div class="likes">
@@ -25,8 +29,21 @@
         <p>{{game.likes}}</p>
     </div>
     {{else}}
-    <a href="/games/{{game._id}}/like"><i class="fa-regular fa-heart"></i></a>
-    <p>{{game.likes}}</p>
+    <div class="likes">
+        <a href="/games/{{game._id}}/like"><i class="fa-regular fa-heart"></i></a>
+        <p>{{game.likes}}</p>
+    </div>
+    {{/if}}
+    {{#if game.isSave}}
+    <div class="saves">
+        <i class="fa-solid fa-bookmark" id="owner-save"></i>
+        <p>{{game.savesCount}}</p>
+    </div>
+    {{else}}
+    <div class="saves">
+        <a href="/games/{{game._id}}/save"><i class="fa-regular fa-bookmark"></i></a>
+        <p>{{game.savesCount}}</p>
+    </div>
     {{/if}}
     {{/if}}
     {{/if}}
@@ -45,7 +62,7 @@
             {{else}}
             {{#each game.comments}}
             <div {{#if isYourComment}}class="your-comment" {{/if}}>
-                <h3>{{#if isOwner}}<span>@Creator</span>{{/if}} {{username}}</h3>
+                <h3>{{#if isOwner}}<span>@publisher</span>{{/if}} {{username}}</h3>
                 {{#if isYourComment}}
                 <a href="/comment/{{_id}}/edit"><i class="fa-solid fa-square-pen"></i></a>
                 <a href="/comment/{{_id}}/delete"><i class="fa-solid fa-trash"></i></a>

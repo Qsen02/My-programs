@@ -41,6 +41,10 @@ let gamesSchema = new mongoose.Schema({
         type: [mongoose.SchemaTypes.ObjectId],
         ref: "Comments",
         default: []
+    },
+    saves: {
+        type: [String],
+        default: []
     }
 });
 
