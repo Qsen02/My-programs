@@ -94,6 +94,7 @@ form .errorField {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .edit-comment input,

@@ -6,13 +6,12 @@ const { showDetails, onComment } = require("../contorllers/details");
 const { showSearchForm, onSearch } = require("../contorllers/search");
 const { showDeleteForm, onDelete, onReject } = require("../contorllers/delete");
 const { showEditForm, onEdit } = require("../contorllers/edit");
-const { showRegisterForm, onRegister } = require("../contorllers/register");
-const { showLoginform, onLogin } = require("../contorllers/login");
-const { isGuest, isUser } = require("../middlewears/guards");
+const { isUser } = require("../middlewears/guards");
 const { onLike, onSave } = require("../contorllers/likes and saves");
 const { showDeleteCommentForm, onDeleteComment, onRefuseComment } = require("../contorllers/deleteComment");
 const { showEditCommentForm, onEditComment } = require("../contorllers/editComment");
 const { showSaves } = require("../contorllers/saves");
+const { userRouter } = require("../contorllers/users");
 
 let router = Router();
 
@@ -28,10 +27,6 @@ router.get("/games/delete/:id/yes", isUser(), onDelete);
 router.get("/games/delete/:id/no", isUser(), onReject);
 router.get("/games/edit/:id", isUser(), showEditForm);
 router.post("/games/edit/:id", isUser(), upload.single("image"), onEdit);
-router.get("/register", isGuest(), showRegisterForm);
-router.post("/register", isGuest(), onRegister);
-router.get("/login", isGuest(), showLoginform);
-router.post("/login", isGuest(), onLogin);
 router.get("/games/:id/like", isUser(), onLike);
 router.post("/details/:id/comment", isUser(), onComment);
 router.get("/comment/:id/delete", isUser(), showDeleteCommentForm);
@@ -41,10 +36,9 @@ router.get("/comment/:id/edit", isUser(), showEditCommentForm);
 router.post("/comment/:id/edit", isUser(), onEditComment);
 router.get("/games/:id/save", isUser(), onSave);
 router.get("/saves", isUser(), showSaves);
-router.get("/logout", (req, res) => {
-    res.clearCookie("token");
-    res.redirect("/login");
-})
+//users
+router.use(userRouter);
+
 router.get("*", (req, res) => {
     res.render("404");
 })
