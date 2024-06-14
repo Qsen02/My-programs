@@ -6,9 +6,9 @@
 </div>
 {{/if}}
 <form method="post">
-    <h3>Edit your comment</h3>
+    <h3>Write your comment</h3>
     <div class="edit-comment">
-    <input {{#if error}}class="errorField"{{/if}}type="text" name="content" value="{{content}}">
+    <input {{#if errors}}class="errorField"{{/if}}type="text" name="content" value="{{content}}">
     <button type="submit">Submit</button>
     </div>
 </form>

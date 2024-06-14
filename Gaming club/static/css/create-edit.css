@@ -43,6 +43,7 @@ form button {
     border: none;
     font-size: 18pt;
     cursor: pointer;
+    padding: 0 20px;
 }
 
 form button:hover {
@@ -95,6 +96,7 @@ form .errorField {
     text-align: center;
     cursor: pointer;
     border-radius: 20px;
+    padding: 10px 20px;
 }
 
 .edit-comment input,

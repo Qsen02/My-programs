@@ -3,21 +3,27 @@ let mongoose = require("mongoose");
 let gamesSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        require: true,
+        minLength: [5, "Name must be at least 5 symbols long and only digits and letters!"],
+        match: [/^[a-zA-Z0-9 ]+$/gi, "Name must be at least 5 symbols long and only digits and letters!"]
     },
     year: {
         type: Number,
         require: true,
-        min: 1960,
-        max: 2030
+        min: [1960, "Age must be between 1960 and 2030"],
+        max: [2030, "Age must be between 1960 and 2030"]
     },
     creator: {
         type: String,
-        require: true
+        require: true,
+        minLength: [5, "Creator must be at least 5 symbols long and only digits and letters!"],
+        match: [/^[a-zA-Z0-9 ]+$/gi, "Creator must be at least 5 symbols long and only digits and letters!"]
     },
     category: {
         type: String,
-        require: true
+        require: true,
+        minLength: [3, "Category must be at least 3 symbols long and only digits and letters!"],
+        match: [/^[a-zA-Z0-9 ]+$/gi, "Category must be at least 5 symbols long and only digits and letters!"]
     },
     image: String,
     likes: {
@@ -27,7 +33,8 @@ let gamesSchema = new mongoose.Schema({
     description: {
         type: String,
         require: true,
-        maxLenght: 1000
+        minLength: [20, "Description must be between 20 and 1000 symbols!"],
+        maxLenght: [1000, "Description must be between 20 and 1000 symbols!"]
     },
     ownerId: {
         type: String,

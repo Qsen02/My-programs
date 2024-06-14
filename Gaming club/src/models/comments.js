@@ -7,7 +7,7 @@ let commentSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        require: true
+        require: true,
     },
     gameId: {
         type: String,

@@ -1,4 +1,3 @@
-const { addComment } = require("../services/comments");
 const { checkGameId, getGameById } = require("../services/games");
 const { getUserById } = require("../services/users");
 
@@ -42,28 +41,6 @@ async function showDetails(req, res) {
     res.render("details", { game, isEmpty, commentCount, isHaveUser, creator: creator.username });
 }
 
-async function onComment(req, res) {
-    let user = req.user;
-    let id = req.params.id;
-    let isValid = await checkGameId(id);
-    if (!isValid) {
-        res.render("404");
-        return;
-    }
-    let content = req.body.content;
-    try {
-        if (!content) {
-            throw new Error("Field required!");
-        }
-        await addComment(user.username, content, id);
-        res.redirect(`/games/details/${id}`);
-    } catch (err) {
-        res.redirect(`/games/details/${id}`);
-        return;
-    }
-}
-
 module.exports = {
     showDetails,
-    onComment
 }

@@ -53,10 +53,7 @@
     <details>
         <summary>Comments:<span>{{commentCount}}</span></summary>
         <div class="comment-content">
-            <form action="/details/{{game._id}}/comment" method="post">
-                <textarea name="content" placeholder="Write comment..."></textarea>
-                <button type="Submit">Submit</button>
-            </form>
+                <button><a href="/details/{{game._id}}/comment">Comment</a></button>
             {{#if isEmpty}}
             <h3>No comments yet, be the first one!</h3>
             {{else}}

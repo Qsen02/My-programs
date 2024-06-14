@@ -24,6 +24,7 @@
     border: none;
     font-size: 18pt;
     cursor: pointer;
+    padding: 0 20px;
 }
 
 .delete-wrapper button:hover {

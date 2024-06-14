@@ -1,6 +1,8 @@
 {{#if errors}}
 <div class="error">
-    <p>All fields required!</p>
+    {{#each errors}}
+    <p>{{this}}</p>
+    {{/each }}
 </div>
 {{/if}}
 <form method="post" enctype="multipart/form-data">

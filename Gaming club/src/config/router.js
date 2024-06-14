@@ -1,48 +1,34 @@
-let { Router } = require("express");
-const { upload } = require("./multer");
 const { showHome, showCatalog } = require("../contorllers/home");
-const { showCreateForm, onCreate } = require("../contorllers/create");
-const { showDetails, onComment } = require("../contorllers/details");
+const { showDetails } = require("../contorllers/details");
 const { showSearchForm, onSearch } = require("../contorllers/search");
-const { showDeleteForm, onDelete, onReject } = require("../contorllers/delete");
-const { showEditForm, onEdit } = require("../contorllers/edit");
 const { isUser } = require("../middlewears/guards");
 const { onLike, onSave } = require("../contorllers/likes and saves");
-const { showDeleteCommentForm, onDeleteComment, onRefuseComment } = require("../contorllers/deleteComment");
-const { showEditCommentForm, onEditComment } = require("../contorllers/editComment");
 const { showSaves } = require("../contorllers/saves");
 const { userRouter } = require("../contorllers/users");
+const { gameRouter } = require("../contorllers/games");
+const { commentRouter } = require("../contorllers/comments");
 
-let router = Router();
+function routerConfig(app) {
+    app.get("/", showHome);
+    app.get("/games/catalog", showCatalog);
+    app.get("/games/details/:id", showDetails);
+    app.get("/games/search", showSearchForm);
+    app.get("/search?*", onSearch);
+    app.get("/games/:id/like", isUser(), onLike);
+    app.get("/games/:id/save", isUser(), onSave);
+    app.get("/saves", isUser(), showSaves);
 
-router.get("/", showHome);
-router.get("/games/catalog", showCatalog);
-router.get("/games/create", isUser(), showCreateForm);
-router.post("/games/create", isUser(), upload.single("image"), onCreate);
-router.get("/games/details/:id", showDetails);
-router.get("/games/search", showSearchForm);
-router.get("/search?*", onSearch);
-router.get("/games/delete/:id", isUser(), showDeleteForm);
-router.get("/games/delete/:id/yes", isUser(), onDelete);
-router.get("/games/delete/:id/no", isUser(), onReject);
-router.get("/games/edit/:id", isUser(), showEditForm);
-router.post("/games/edit/:id", isUser(), upload.single("image"), onEdit);
-router.get("/games/:id/like", isUser(), onLike);
-router.post("/details/:id/comment", isUser(), onComment);
-router.get("/comment/:id/delete", isUser(), showDeleteCommentForm);
-router.get("/comment/:id/delete/yes", isUser(), onDeleteComment);
-router.get("/comment/:id/delete/no", isUser(), onRefuseComment);
-router.get("/comment/:id/edit", isUser(), showEditCommentForm);
-router.post("/comment/:id/edit", isUser(), onEditComment);
-router.get("/games/:id/save", isUser(), onSave);
-router.get("/saves", isUser(), showSaves);
-//users
-router.use(userRouter);
+    app.use(gameRouter);
 
-router.get("*", (req, res) => {
-    res.render("404");
-})
+    app.use(commentRouter);
+
+    app.use(userRouter);
+
+    app.get("*", (req, res) => {
+        res.render("404");
+    })
+}
 
 module.exports = {
-    router
+    routerConfig
 }
