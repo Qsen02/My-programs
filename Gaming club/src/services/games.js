@@ -46,7 +46,7 @@ async function editGame(id, data, userId) {
 }
 
 function searching(query) {
-    let results = Games.find({ name: RegExp(query, "i") });
+    let results = Games.find({ name: RegExp(query.name, "i") });
     return results;
 }
 

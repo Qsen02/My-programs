@@ -1,27 +1,11 @@
-const { getAllGames, searching } = require("../services/games")
-
-async function showSearchForm(req, res) {
-    let games = await getAllGames().lean();
-    let isEmpty = false;
-    if (games.length == 0) {
-        isEmpty = true;
-    }
-    res.render("search", { games, isEmpty });
-}
+const { searching } = require("../services/games")
 
 async function onSearch(req, res) {
-    let url = req.url.split("?")[1];
-    let query = url.split("=")[1].trim();
-    let newQuery = query.replaceAll("+", " ");
-    let games = await searching(newQuery).lean();
-    let isEmpty = false;
-    if (games.length == 0) {
-        isEmpty = true;
-    }
-    res.render("search", { games, isEmpty });
+    let query = req.query;
+    let games = await searching(query).lean();
+    res.render("search", { games });
 }
 
 module.exports = {
-    showSearchForm,
     onSearch
 }
