@@ -5,9 +5,7 @@ function start() {
     notification.style.display = "block";
     notification.addEventListener("click", onClose);
 
-    setInterval(() => notification.style.display = "none", 10000);
-
-    function onClose(event) {
+    function onClose() {
         notification.style.display = "none";
     }
 }

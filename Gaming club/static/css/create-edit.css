@@ -85,8 +85,9 @@ form .errorField {
 }
 
 .error {
-    display: block;
-    margin: 0 auto;
+    position: fixed;
+    right: 100px;
+    top: 100px;
     width: 220px;
     height: auto;
     font-size: 18pt;
