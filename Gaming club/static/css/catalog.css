@@ -35,8 +35,7 @@ h1 {
     width: 300px;
 }
 
-
-/* .catalog-content button {
+.catalog-content button {
     display: block;
     margin: 0 auto;
     width: auto;
@@ -51,24 +50,12 @@ h1 {
 .catalog-content button:hover {
     background-color: aqua;
     color: white;
-} */
+}
 
 .catalog-content a {
     display: block;
-    margin: 0 auto;
-    width: auto;
-    height: 40px;
-    border-radius: 20px;
-    background-color: rgb(3, 194, 247);
-    border: none;
-    font-size: 18pt;
-    cursor: pointer;
     text-decoration: none;
-    color: aliceblue;
-    padding-top: 10px;
-}
-
-.catalog-content a:hover {
-    background-color: aqua;
-    color: white;
+    width: 100px;
+    height: 50px;
+    margin: 0 auto;
 }
