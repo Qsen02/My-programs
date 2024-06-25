@@ -4,7 +4,7 @@ Summary: This is a system for reservation rooms in hotel by users.
 
 Technologies:
 
--JS, Lit-html, Page
+-JS, Fetch API, Lit-html, Page
 
 Features:
 
