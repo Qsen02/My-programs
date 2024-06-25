@@ -2,6 +2,10 @@ Hotel System
 
 Summary: This is a system for reservation rooms in hotel by users.
 
+Technologies:
+
+-JS, Lit-html, Page
+
 Features:
 
 -Users can register or login if they have registration.

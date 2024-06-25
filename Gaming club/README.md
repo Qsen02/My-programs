@@ -2,6 +2,10 @@ Gaming club
 
 Summary: App for publishing articles related to games.
 
+Technologies:
+
+-JS, Express, Handlebars, MongoDB, Json web token and Bcrypt
+
 Features:
 
 -Login and register functionallity for users.
