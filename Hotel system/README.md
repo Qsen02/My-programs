@@ -21,9 +21,9 @@ Features:
 Screenshots:
 
 -Home page:
-![Screenshot 2024-06-25 213717](https://github.com/Qsen02/My-programs/assets/101555544/5fd0ebc9-61e6-496b-ab94-748aba462f34)
+![Screenshot 2024-06-25 214538](https://github.com/Qsen02/My-programs/assets/101555544/8f54ad95-3da9-41ae-b183-657b18ff1c41)
 -Catalog:
-![Screenshot 2024-06-25 213734](https://github.com/Qsen02/My-programs/assets/101555544/2d503bf3-fb24-4d64-832b-088628d4ec7a)
+![Screenshot 2024-06-25 214605](https://github.com/Qsen02/My-programs/assets/101555544/93972ebe-e426-4819-9a3e-e90dc4332186)
 -Details for room:
 ![Screenshot 2024-06-25 213806](https://github.com/Qsen02/My-programs/assets/101555544/0dfa8a47-dfbf-490f-8378-e5e7c423d9eb)
 -Deposit page:
