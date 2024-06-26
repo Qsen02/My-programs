@@ -1,15 +1,23 @@
-let fs = require("fs");
+const mongoose = require("mongoose");
 
-function loadPlaylist() {
-    let data = JSON.parse(fs.readFileSync("./views/playlists.json"));
-    return data;
-}
+const playlistSchema = new mongoose.Schema({
+    playlistName: {
+        type: String,
+        require: true
+    },
+    songs: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Songs",
+        default: []
+    },
+    ownerId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Users"
+    }
+})
 
-function savePlaylist(data) {
-    fs.writeFileSync("./views/playlists.json", JSON.stringify(data));
-}
+const Playlists = mongoose.model("Playlists", playlistSchema);
 
 module.exports = {
-    loadPlaylist,
-    savePlaylist
+    Playlists
 }

@@ -1,41 +1,5 @@
-<header>
-        <nav class="navbar">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-            <li>    
-            <div>
-                <a href="confirmLogOut">log out</a>
-            </div>
-            </li>
-            <li><i class="fa-solid fa-circle-user" id="icon"></i></li>
-            <li>
-            {{#each curClient}}
-            <div>
-                <h3>{{username}}</h3>
-            </div>
-            {{/each}}
-            </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-   <form action="/delete" method="post" class="songs">
-   <h1>Which playlist do you want to delete?</h1>
-     <input type="text" placeholder="enter playlist name" name="deletePlaylist">
-       <button type="submit">Delete</button>
-     </form>
-    </main>
-    <footer>
-        <nav class="navbar-footer">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-                <li>
-                    <p>&copy; All rights reserved</p>
-                </li>
-            </ul>
-        </nav>
-    </footer>
+<form action="/delete" method="post" class="songs">
+    <h1>Which playlist do you want to delete?</h1>
+    <input type="text" placeholder="enter playlist name" name="deletePlaylist">
+    <button type="submit">Delete</button>
+</form>

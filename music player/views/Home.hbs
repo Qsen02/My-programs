@@ -1,59 +1,14 @@
-    <header>
-        <nav class="navbar">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-            <li>    
-            <div>
-                <a href="confirmLogOut">log out</a>
-            </div>
-            </li>
-            <li><i class="fa-solid fa-circle-user" id="icon"></i></li>
-            <li>
-            {{#each curClient}}
-            <div>
-                <h3>{{username}}</h3>
-            </div>
-            {{/each}}
-            </li>
-            </ul>
-        </nav>
-        <div class="title">
-            <h1>Welcome! There are your songs.</h1>
-        </div>
-        <div class="button">
-            <div>
-            <button type="button"><a href="addDirectory">add songs</a></button>
-            </div>
-            <div>
-            <button type="button"><a href="deleteAllSongs">delete all songs</a></button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section class="songs">
-      {{#each songs}}
-                 <details>
-                        <summary>{{name}}</summary>
-                        <img src='/public/songsAndImg/alternative1.png'>
-                        <h3>{{name}}</h3>
-                        <audio controls>
-                   <source src="/public/only songs/{{name}}" type="audio/mpeg">
-                   </audio>
-                   </details>
-                {{/each}}
-        </section>
-    </main>
-    <footer>
-        <nav class="navbar-footer">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-                <li>
-                    <p>&copy; All rights reserved</p>
-                </li>
-            </ul>
-        </nav>
-    </footer>
+<div class="title">
+    <h1>Welcome! You can search for songs here!</h1>
+</div>
+<form action="/search" method="get" class="search">
+    <input type="text" name="name" placeholder="Enter song name...">
+    <button type="submit">Search</button>
+</form>
+<section class="songs">
+    {{#each songs}}
+    {{> homeSongs}}
+    {{else}}
+    <p>No songs yet</p>
+    {{/each}}
+</section>

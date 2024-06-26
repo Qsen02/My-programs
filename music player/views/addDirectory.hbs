@@ -1,45 +1,9 @@
-    <header>
-        <nav class="navbar">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-            <li>    
-            <div>
-                <a href="confirmLogOut">log out</a>
-            </div>
-            </li>
-            <li><i class="fa-solid fa-circle-user" id="icon"></i></li>
-            <li>
-            {{#each curClient}}
-            <div>
-                <h3>{{username}}</h3>
-            </div>
-            {{/each}}
-            </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <form action="/addDirectory" method="post" class="addForm">
-        <div class="directory">
-            <h3>Here you can add directory with songs.</h3>
-             <input type="file" id="folderInput" name="songDirectory" webkitdirectory multiple />
-             <label for="folderInput">Add song directory</label>
-             <button type="submit">Add</button>
-              <button type="submit"><a href="home">Cancel</a></button>
-             </div>
-        </form>
-    </main>
-    <footer>
-        <nav class="navbar-footer">
-            <ul>
-                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
-                <li><a href="home">songs</a></li>
-                <li><a href="playlists">playlists</a></li>
-                <li>
-                    <p>&copy; All rights reserved</p>
-                </li>
-            </ul>
-        </nav>
-    </footer>
+<form action="/addDirectory" method="post" class="addForm">
+    <div class="directory">
+        <h3>Here you can add directory with songs.</h3>
+        <input type="file" id="folderInput" name="songDirectory" webkitdirectory multiple />
+        <label for="folderInput">Add song directory</label>
+        <button type="submit">Add</button>
+        <button type="submit"><a href="home">Cancel</a></button>
+    </div>
+</form>

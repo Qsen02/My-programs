@@ -10,8 +10,46 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <script src="https://kit.fontawesome.com/2553465cd5.js" crossorigin="anonymous"></script>
+    <script src="/public/upload.js"></script>
+    <script src="/public/notify.js"></script>
 </head>
+
 <body>
-    {{{body}}}
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><img src="/public/songsAndImg/player.png" alt="logo"></li>
+                <li><a href="/">songs</a></li>
+                {{#if hasUser}}
+                <li><a href="/songs/create">create</a></li>
+                <li><a href="/playlists">playlists</a></li>
+                <li><a href="/logout">logout</a></li>
+                <li><i class="fa-solid fa-circle-user" id="icon"></i></li>
+                <li>
+                    <div>
+                        <h3>{{user.username}}</h3>
+                    </div>
+                </li>
+                {{else}}
+                <li><a href="/login">login</a></li>
+                <li><a href="/register">register</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {{#if errors}}
+        <div class="notification">
+            {{#each errors}}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+        {{/if}}
+        {{{body}}}
+    </main>
+    <footer>
+        <p>&copy; All rights reserved</p>
+    </footer>
 </body>
+
 </html>

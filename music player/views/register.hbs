@@ -1,0 +1,11 @@
+<form method="post" class="sign-in">
+    <h3>You can register here</h3>
+    <input {{#if errors.username}}class="error" {{/if}} type="text" name="username" placeholder="Enter username..."
+        {{#if fields.username}}value="{{fields.username}}" {{/if}}>
+    <input {{#if errors.email}}class="error" {{/if}} type="text" name="email" placeholder="Enter email..."
+    {{#if fields.email}}value="{{fields.email}}" {{/if}}>
+    <input {{#if errors.password}}class="error" {{/if}} type="password" name="password" placeholder="Enter password...">
+    <input {{#if errors.repass}}class="error" {{/if}} type="password" name="repass" placeholder="Enter password...">
+    <button type="submit">Submit</button>
+    <p>You have account? <a href="/login">Log in</a> here!</p>
+</form>
