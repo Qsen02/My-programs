@@ -5,9 +5,6 @@ const songSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    image: {
-        type: String
-    },
     audio: {
         type: String,
         require: true

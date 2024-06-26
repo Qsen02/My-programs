@@ -30,10 +30,15 @@ async function checkSongId(id) {
     return true;
 }
 
+function searching(query) {
+    let result = Songs.find({ name: new RegExp(query.name, "i") });
+    return result;
+}
 module.exports = {
     getAllSongs,
     getSongById,
     deleteSong,
     checkSongId,
-    createSong
+    createSong,
+    searching
 }

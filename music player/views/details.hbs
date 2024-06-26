@@ -1,12 +1,21 @@
 <div class="details">
     <img src="/public/songsAndImg/alternative1.png">
-    <h3>Very good music</h3>
+    <h3>{{song.name}}</h3>
     <audio controls>
-        <source src="/public/only songs/22. Shape Shifter.mp3" type="audio/mpeg">
+        <source src="/{{song.audio}}" type="audio/mpeg">
     </audio>
+    {{#if hasUser}}
     <div class="buttons">
-        <a href="#" id="like"><i class="fa-solid fa-thumbs-up"></i> 5</a>
-        <i class="fa-solid fa-thumbs-up" id="liked"><span> 5</span></i>
-        <a href="#">Delete</a>
+        {{#if song.isOwner}}
+        <i class="fa-solid fa-thumbs-up" id="liked"><span> {{song.likesCount}}</span></i>
+        <a href="/songs/{{song._id}}/delete">Delete</a>
+        {{else}}
+            {{#if song.isLiked}}
+            <i class="fa-solid fa-thumbs-up" id="liked"><span> {{song.likesCount}}</span></i>
+            {{else}}
+            <a href="/songs/{{song._id}}/like" id="like"><i class="fa-solid fa-thumbs-up"></i> {{song.likesCount}}</a>
+            {{/if}}
+        {{/if}}
     </div>
+    {{/if}}
 </div>

@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { isGuest, isUser } = require("../middlewares/guards");
 const { body, validationResult } = require("express-validator");
 const { errorParser } = require("../util");
-const { register } = require("../services/user");
+const { register, login } = require("../services/user");
 const { setToken } = require("../services/token");
 
 const userRouter = Router();
@@ -34,6 +34,22 @@ userRouter.post("/register", isGuest(),
 userRouter.get("/logout", isUser(), (req, res) => {
     res.clearCookie("token");
     res.redirect("/");
+})
+
+userRouter.get("/login", isGuest(), (req, res) => {
+    res.render("login");
+});
+
+userRouter.post("/login", isGuest(), async(req, res) => {
+    let fields = req.body;
+    try {
+        let user = await login(fields.email, fields.password);
+        let token = setToken(user);
+        res.cookie("token", token, { httpOnly: true });
+        res.redirect("/");
+    } catch (err) {
+        res.render("login", { errors: errorParser(err).errors, email: fields.email });
+    }
 })
 module.exports = {
     userRouter

@@ -1,0 +1,12 @@
+<form method="post" class="addForm" enctype="multipart/form-data">
+    <h1>Add your song</h1>
+    <label for="name">Song name</label>
+    <input {{#if errors.name}}class="error"{{/if}} type="text" name="name" placeholder="Enter song name here..." {{#if name}}value="{{name}}"{{/if}}>
+    <div class="add">
+        <button type="button">Upload</button>
+        <input type="file" name="audio" id="audio">
+        <label for="audio">Add audio</label>
+        <span>Choose song</span>
+    </div>
+    <button type="submit">Add</button>
+</form>
