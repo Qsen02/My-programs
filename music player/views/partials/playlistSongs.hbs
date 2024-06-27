@@ -1,5 +1,8 @@
 <div>
     <img src="/public/songsAndImg/alternative1.png">
     <h3>{{artist}} - {{name}}</h3>
+    <section class="playlist-buttons">
     <a href="/songs/{{_id}}"><button>listen</button></a>
+    <a href="/playlist/{{playlistId}}/remove/{{_id}}"><button>remove</button></a>
+    </section>
 </div>

@@ -1,0 +1,5 @@
+<form  method="post">
+    <h1>Create playlist</h1>
+    <input {{#if errors.playlistName}}class="error"{{/if}} type="text" name="playlistName" placeholder="Enter playlist name..." {{#if playlistName}}value="{{playlistName}}"{{/if}}>
+    <button type="submit">Submit</button>
+</form>

@@ -4,12 +4,8 @@
 </div>
 <section class="playlists">
     {{#each playlists}}
-    <div>
-        <h3>{{playlistName}}</h3>
-        <div class="playlist-buttons">
-            <a href="#">Delete</a>
-            <a href="#">Details</a>
-        </div>
-    </div>
+    {{> playlists}}
+    {{else}}
+    <p>No playlists yet</p>
     {{/each}}
 </section>

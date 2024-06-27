@@ -1,7 +1,11 @@
 <form method="post" class="addForm" enctype="multipart/form-data">
     <h1>Add your song</h1>
+    <label for="artist">Artist name</label>
+    <input {{#if errors.artist}}class="error" {{/if}} type="text" name="artist" placeholder="Enter artist name here..."
+        {{#if fields.artist}}value="{{fields.artist}}" {{/if}}>
     <label for="name">Song name</label>
-    <input {{#if errors.name}}class="error"{{/if}} type="text" name="name" placeholder="Enter song name here..." {{#if name}}value="{{name}}"{{/if}}>
+    <input {{#if errors.name}}class="error" {{/if}} type="text" name="name" placeholder="Enter song name here..." {{#if
+        fields.name}}value="{{fields.name}}" {{/if}}>
     <div class="add">
         <button type="button">Upload</button>
         <input type="file" name="audio" id="audio">

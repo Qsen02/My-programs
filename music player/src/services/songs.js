@@ -30,15 +30,28 @@ async function checkSongId(id) {
     return true;
 }
 
-function searching(query) {
-    let result = Songs.find({ name: new RegExp(query.name, "i") });
+function searching(values) {
+    let query = {}
+    if (values.artist) {
+        query.artist = new RegExp(values.artist, "i");
+    }
+    if (values.name) {
+        query.name = new RegExp(values.name, "i");
+    }
+    let result = Songs.find(query);
     return result;
 }
+
+async function liking(songId, user) {
+    await Songs.findByIdAndUpdate(songId, { $push: { likes: user._id } });
+}
+
 module.exports = {
     getAllSongs,
     getSongById,
     deleteSong,
     checkSongId,
     createSong,
-    searching
+    searching,
+    liking
 }

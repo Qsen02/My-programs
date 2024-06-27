@@ -401,6 +401,11 @@ form button {
     border-radius: 10px;
 }
 
+.cancel a button {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
 
 /*delete*/
 
@@ -416,45 +421,9 @@ form button {
     margin: 15px 30px;
 }
 
-
-/*addDirectory*/
-
-.directory input {
-    display: none;
-}
-
-.directory label {
-    background-color: red;
-    color: white;
-    border: solid 1px black;
-    border-radius: 20px;
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    width: 150px;
-    cursor: pointer;
-}
-
 .directory label:hover {
     background-color: brown;
     color: lightgray;
-}
-
-
-/*deleteAllSong*/
-
-.deleteAllSongs {
-    margin: 0 auto;
-    background-color: grey;
-    width: 300px;
-    height: auto;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.deleteAllSongs button {
-    display: block;
-    margin: 0 auto;
 }
 
 
@@ -694,15 +663,22 @@ form button {
     color: lightgrey;
 }
 
+.playlists p {
+    font-size: 24pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .search {
     display: block;
     background-color: rgb(72, 72, 72);
+    width: 1000px;
     margin: 0 auto;
     margin-bottom: 20px;
 }
 
 .search input {
-    width: 400px;
+    width: 300px;
+    margin-left: 20px;
     background-color: grey;
     border: none;
     color: white;
@@ -763,4 +739,19 @@ form button {
 
 .error {
     border-bottom: solid 3px red;
+}
+
+.playlist-buttons {
+    display: block;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.playlist-buttons a {
+    display: inline-block;
+}
+
+.playlist-buttons a button {
+    display: inline-block;
+    margin-left: 30px;
 }

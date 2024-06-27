@@ -1,5 +1,5 @@
-<form action="/delete" method="post" class="songs">
-    <h1>Which playlist do you want to delete?</h1>
-    <input type="text" placeholder="enter playlist name" name="deletePlaylist">
-    <button type="submit">Delete</button>
-</form>
+<section class="cancel">
+    <h1>Are you sure?</h1>
+    <a href="/songs/{{id}}/delete/yes"><button type="button">Yes</button></a>
+    <a href="/songs/{{id}}/delete/no"><button type="button">No</button></a>
+</section>
