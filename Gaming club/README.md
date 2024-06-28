@@ -1,7 +1,5 @@
 # Gaming club
 
-# Summary:
-
 -App for publishing articles related to games.
 
 # Technologies:
