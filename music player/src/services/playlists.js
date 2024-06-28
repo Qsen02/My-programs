@@ -1,4 +1,5 @@
 const { Playlists } = require("../models/playlists");
+const { Songs } = require("../models/songs");
 
 function getAuthorPlaylists(user) {
     let data = Playlists.find({ ownerId: user._id });
@@ -37,6 +38,13 @@ async function checkPlaylistId(id) {
     return true;
 }
 
+async function getTheRestSongs(playlistId) {
+    let songs = await Songs.find().lean();
+    let playlist = await Playlists.findById(playlistId).lean();
+    let data = songs.filter(el => !playlist.songs.map(el => el.toString()).includes(el._id.toString()));
+    return data;
+}
+
 module.exports = {
     getAuthorPlaylists,
     getPlaylistById,
@@ -44,5 +52,6 @@ module.exports = {
     deletePlaylist,
     addSongToPlaylist,
     deleteSongFromPlaylist,
-    checkPlaylistId
+    checkPlaylistId,
+    getTheRestSongs
 }

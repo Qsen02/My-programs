@@ -25,7 +25,6 @@ songRouter.post("/songs/create", isUser(), upload.single("audio"),
             }
             let audioPath = "";
             if (req.file) {
-                console.log(req.file);
                 let audioFile = req.file;
                 audioPath = audioFile.path;
             }

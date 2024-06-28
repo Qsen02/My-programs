@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const { isUser } = require("../middlewares/guards");
-const { createPlaylist, checkPlaylistId, getPlaylistById, getAuthorPlaylists, deletePlaylist } = require("../services/playlists");
+const { createPlaylist, checkPlaylistId, getPlaylistById, getAuthorPlaylists, deletePlaylist, addSongToPlaylist, getTheRestSongs, deleteSongFromPlaylist } = require("../services/playlists");
 const { body, validationResult } = require("express-validator");
 const { errorParser } = require("../util");
+const { checkSongId, getSongById } = require("../services/songs");
 
 const playlistRouter = Router();
 
@@ -74,6 +75,48 @@ playlistRouter.get("/playlists/:id/delete/yes", isUser(), async(req, res) => {
     };
     await deletePlaylist(id);
     res.redirect("/playlists");
+})
+
+playlistRouter.get("/playlists/:id/add", isUser(), async(req, res) => {
+    let id = req.params.id;
+    let isValid = await checkPlaylistId(id);
+    if (!isValid) {
+        res.render("404");
+        return;
+    };
+    let songs = await getTheRestSongs(id);
+    let playlist = await getPlaylistById(id).lean();
+    songs.forEach(el => el.playlistId = playlist._id);
+    res.render("addSong", { songs, playlist });
+
+});
+
+playlistRouter.get("/playlists/:playlistId/add/:songId", isUser(), async(req, res) => {
+    let playlistId = req.params.playlistId;
+    let songId = req.params.songId;
+    let isValidPlaylist = await checkPlaylistId(playlistId);
+    let isValidSong = await checkSongId(songId);
+    if (!isValidPlaylist || !isValidSong) {
+        res.render("404");
+        return;
+    }
+    let song = await getSongById(songId).lean();
+    await addSongToPlaylist(playlistId, song);
+    res.redirect(`/playlists/${playlistId}`);
+})
+
+playlistRouter.get("/playlists/:playlistId/remove/:songId", isUser(), async(req, res) => {
+    let playlistId = req.params.playlistId;
+    let songId = req.params.songId;
+    let isValidPlaylist = await checkPlaylistId(playlistId);
+    let isValidSong = await checkSongId(songId);
+    if (!isValidPlaylist || !isValidSong) {
+        res.render("404");
+        return;
+    }
+    let song = await getSongById(songId).lean();
+    await deleteSongFromPlaylist(playlistId, song);
+    res.redirect(`/playlists/${playlistId}`);
 })
 
 module.exports = {

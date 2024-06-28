@@ -1,0 +1,10 @@
+<div class="title">
+    <h1>Add song to {{playlist.playlistName}} playlist</h1>
+</div>
+<section class="songs">
+    {{#each songs}}
+    {{> songsForAdding}}
+    {{else}}
+    <p>No songs yet</p>
+    {{/each}}
+</section>
