@@ -1,8 +1,6 @@
 # Hotel System
 
-# Summary:
-
--This is a system for reservation rooms in hotel by users.
+-This is app for reservation rooms in hotel by users.
 
 # Technologies:
 
