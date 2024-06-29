@@ -9,6 +9,7 @@
     text-align: center;
     color: aliceblue;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
 }
 
 .home img {
@@ -16,6 +17,7 @@
     display: block;
     width: 500px;
     height: 300px;
+    border-radius: 7px;
 }
 
 .home p {
