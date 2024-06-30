@@ -1,0 +1,32 @@
+<div class="profile">
+    <i class="fa-solid fa-circle-user"></i>
+    <h2>Username: {{user.username}}</h2>
+    <p>Created posts: {{authorGameCount}}</p>
+    <p>Saved posts: {{savesCount}}</p>
+</div>
+<div class="profile-posts">
+    <section class="profile-section">
+        <details>
+            <summary>Created games</summary>
+            <div class="profile-content">
+                {{#each authorGames}}
+                {{> profileGames}}
+                {{else}}
+                <p>No created games yet</p>
+                {{/each}}
+            </div>
+        </details>
+    </section>
+    <section class="profile-section">
+        <details>
+            <summary>Saved games</summary>
+            <div class="profile-content">
+                {{#each saves}}
+                {{> profileGames}}
+                {{else}}
+                <p>No saved games yet</p>
+                {{/each}}
+            </div>
+        </details>
+    </section>
+</div>

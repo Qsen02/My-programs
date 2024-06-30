@@ -8,6 +8,7 @@ function session() {
                 let playload = verifyToken(token);
                 req.user = playload;
                 res.locals.hasUser = true;
+                res.locals.user = playload;
             } catch (err) {
                 res.clearCookie("token");
             }

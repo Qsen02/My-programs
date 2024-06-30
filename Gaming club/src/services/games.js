@@ -68,6 +68,11 @@ async function saving(gameId, userId) {
     await Games.findByIdAndUpdate(gameId, { $push: { saves: userId } });
 }
 
+function getAuthorGames(user) {
+    let data = Games.find({ ownerId: user._id });
+    return data;
+}
+
 module.exports = {
     getAllGames,
     getGameById,
@@ -78,5 +83,6 @@ module.exports = {
     checkGameId,
     liking,
     comment,
-    saving
+    saving,
+    getAuthorGames
 }

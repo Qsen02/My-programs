@@ -3,7 +3,7 @@ const { showDetails } = require("../contorllers/details");
 const { onSearch } = require("../contorllers/search");
 const { isUser } = require("../middlewears/guards");
 const { onLike, onSave } = require("../contorllers/likes and saves");
-const { showSaves } = require("../contorllers/saves");
+const { showProfile } = require("../contorllers/profile");
 const { userRouter } = require("../contorllers/users");
 const { gameRouter } = require("../contorllers/games");
 const { commentRouter } = require("../contorllers/comments");
@@ -15,7 +15,7 @@ function routerConfig(app) {
     app.get("/games/search*", onSearch);
     app.get("/games/:id/like", isUser(), onLike);
     app.get("/games/:id/save", isUser(), onSave);
-    app.get("/saves", isUser(), showSaves);
+    app.get("/profile", isUser(), showProfile);
 
     app.use(gameRouter);
 

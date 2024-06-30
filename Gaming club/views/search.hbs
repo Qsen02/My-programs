@@ -5,12 +5,7 @@
 </form>
 <div class="catalog-wrapper">
     {{#each games}}
-    <div class="catalog-content">
-        <img src="{{image}}" alt="{{name}}">
-        <h1>{{name}}</h1>
-        <h3>Category: {{category}}</h3>
-        <a href="/games/details/{{_id}}"><button>Details</button></a>
-    </div>
+    {{> games}}
     {{else}}
     <h1>No results :(</h1>
     {{/each}}

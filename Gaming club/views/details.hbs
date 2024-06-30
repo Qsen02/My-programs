@@ -53,7 +53,7 @@
     <details>
         <summary>Comments:<span>{{commentCount}}</span></summary>
         <div class="comment-content">
-                <button><a href="/details/{{game._id}}/comment">Comment</a></button>
+            <button><a href="/details/{{game._id}}/comment">Comment</a></button>
             {{#if isEmpty}}
             <h3>No comments yet, be the first one!</h3>
             {{else}}
@@ -68,6 +68,7 @@
             </div>
             {{/each}}
             {{/if}}
+        </div>
     </details>
 </section>
 {{/if}}

@@ -4,13 +4,7 @@
 <h1>All available games</h1>
 <div class="catalog-wrapper">
     {{#each data}}
-    <div class="catalog-content">
-        <img
-            src="{{image}}" alt="{{name}}">
-        <h1>{{name}}</h1>
-        <h3>Category: {{category}}</h3>
-        <a href="/games/details/{{_id}}"><button>Details</button></a>
-    </div>
+    {{> games}}
     {{/each}}
 </div>
 {{/if}}

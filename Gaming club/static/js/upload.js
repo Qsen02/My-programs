@@ -11,5 +11,4 @@ function start() {
         let filename = event.target.files[0].name;
         uploadText.textContent = filename;
     });
-
 }
