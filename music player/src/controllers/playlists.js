@@ -86,6 +86,7 @@ playlistRouter.get("/playlists/:id/add", isUser(), async(req, res) => {
     };
     let songs = await getTheRestSongs(id);
     let playlist = await getPlaylistById(id).lean();
+    songs.forEach(el => el.playlistId = playlist._id);
     res.render("addSong", { songs, playlist });
 
 });

@@ -15,6 +15,7 @@ songRouter.get("/songs/create", isUser(), (req, res) => {
 songRouter.post("/songs/create", isUser(), upload.single("audio"),
     body("artist").isLength({ min: 2 }).withMessage("Artist must be at least 2 characters long!"),
     body("name").isLength({ min: 3 }).withMessage("Name must be at least 3 characters long!"),
+    body("audio").custom((value, { req }) => req.file).withMessage("Audio file is mandatory!"),
     async(req, res) => {
         let fields = req.body;
         let user = req.user;
