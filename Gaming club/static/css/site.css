@@ -25,13 +25,13 @@ body {
 nav {
     width: 96.9%;
     height: auto;
-    display: block;
+    display: flex;
     padding: 30px;
     background-color: rgb(89, 86, 86);
 }
 
 nav ul {
-    display: block;
+    display: flex;
     margin: 0 auto;
     width: 1000px;
     height: auto;
@@ -39,6 +39,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
+    margin: 0 auto;
     margin-right: 60px;
 }
 
