@@ -31,18 +31,8 @@ async function deleteGame(id) {
     await Games.findByIdAndDelete(id);
 }
 
-async function editGame(id, data, userId) {
-    let newGame = new Games({
-        name: data.name,
-        year: data.year,
-        description: data.description,
-        image: data.image,
-        creator: data.creator,
-        category: data.category,
-        ownerId: userId
-    })
-    await newGame.save();
-    await Games.findByIdAndDelete(id);
+async function editGame(id, data) {
+    await Games.findByIdAndUpdate(id, data);
 }
 
 function searching(query) {

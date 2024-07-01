@@ -4,8 +4,7 @@ let gamesSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
-        minLength: [5, "Name must be at least 5 symbols long and only digits and letters!"],
-        match: [/^[a-zA-Z0-9 ]+$/gi, "Name must be at least 5 symbols long and only digits and letters!"]
+        minLength: [3, "Name must be at least 3 symbols long and only digits and letters!"],
     },
     year: {
         type: Number,
@@ -16,14 +15,12 @@ let gamesSchema = new mongoose.Schema({
     creator: {
         type: String,
         require: true,
-        minLength: [5, "Creator must be at least 5 symbols long and only digits and letters!"],
-        match: [/^[a-zA-Z0-9 ]+$/gi, "Creator must be at least 5 symbols long and only digits and letters!"]
+        minLength: [3, "Creator must be at least 3 symbols long and only digits and letters!"],
     },
     category: {
         type: String,
         require: true,
-        minLength: [3, "Category must be at least 3 symbols long and only digits and letters!"],
-        match: [/^[a-zA-Z0-9 ]+$/gi, "Category must be at least 5 symbols long and only digits and letters!"]
+        minLength: [3, "Category must be minimum 3 symbols long and only digits and letters!"],
     },
     image: String,
     likes: {

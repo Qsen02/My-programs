@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { checkGameId, deleteGame, getGameById, createGame, editGame } = require("../services/games");
+const { checkGameId, deleteGame, getGameById, createGame, editGame, liking, saving } = require("../services/games");
 const { delImg } = require("../services/image");
 const { isUser } = require("../middlewears/guards");
 const { upload } = require("../config/multer");
@@ -85,7 +85,6 @@ gameRouter.get("/games/edit/:id", isUser(), async(req, res) => {
 
 gameRouter.post("/games/edit/:id", isUser(), upload.single("image"), async(req, res) => {
     let id = req.params.id;
-    let userId = req.user._id;
     let isValid = await checkGameId(id);
     if (!isValid) {
         res.render("404");
@@ -99,17 +98,19 @@ gameRouter.post("/games/edit/:id", isUser(), upload.single("image"), async(req, 
     let category = fields.category;
     let creator = fields.creator;
     let imgPath = "";
-    if (req.file) {
-        let imgFile = req.file;
-        imgPath = imgFile.path;
-    }
-    let img = game.image;
-    let imgArr = img.split("\\");
-    let imgName = imgArr[imgArr.length - 1];
     try {
-        await editGame(id, { name, year, description, category, creator, image: "\\" + imgPath }, userId);
-        if (imgName) {
-            await delImg(imgName);
+        if (req.file) {
+            let imgFile = req.file;
+            imgPath = imgFile.path;
+            let img = game.image;
+            let imgArr = img.split("\\");
+            let imgName = imgArr[imgArr.length - 1];
+            await editGame(id, { name, year, description, category, creator, image: "\\" + imgPath });
+            if (imgName && imgName != "gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg") {
+                await delImg(imgName);
+            }
+        } else {
+            await editGame(id, { name, year, description, category, creator });
         }
         res.redirect(`/games/details/${id}`);
     } catch (err) {
@@ -117,6 +118,30 @@ gameRouter.post("/games/edit/:id", isUser(), upload.single("image"), async(req, 
         return;
     }
 });
+
+gameRouter.get("/games/:id/like", isUser(), async(req, res) => {
+    let gameId = req.params.id;
+    let userId = req.user._id;
+    let isValid = await checkGameId(gameId);
+    if (!isValid) {
+        res.render("404");
+        return;
+    }
+    await liking(gameId, userId);
+    res.redirect(`/games/details/${gameId}`);
+})
+
+gameRouter.get("/games/:id/save", isUser(), async(req, res) => {
+    let gameId = req.params.id;
+    let userId = req.user._id;
+    let isValid = await checkGameId(gameId);
+    if (!isValid) {
+        res.render("404");
+        return;
+    }
+    await saving(gameId, userId);
+    res.redirect(`/games/details/${gameId}`);
+})
 
 module.exports = {
     gameRouter
