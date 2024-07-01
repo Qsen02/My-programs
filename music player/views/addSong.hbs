@@ -1,6 +1,11 @@
 <div class="title">
     <h1>Add song to {{playlist.playlistName}} playlist</h1>
 </div>
+<form action="/playlists/{{playlist._id}}/add/search" method="get" class="search">
+    <input text="text" name="artist" placeholder="Enter artist name...">
+    <input type="text" name="name" placeholder="Enter song name...">
+    <button type="submit">Search</button>
+</form>
 <section class="songs">
     {{#each songs}}
     {{> songsForAdding}}

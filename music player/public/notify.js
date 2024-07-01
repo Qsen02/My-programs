@@ -5,7 +5,7 @@ function start() {
 
     notification.addEventListener("click", closing);
 
-    function closing(event) {
-        event.target.style.display = "none";
+    function closing() {
+        notification.style.display = "none";
     }
 }

@@ -3,7 +3,7 @@ const { isUser } = require("../middlewares/guards");
 const { createPlaylist, checkPlaylistId, getPlaylistById, getAuthorPlaylists, deletePlaylist, addSongToPlaylist, getTheRestSongs, deleteSongFromPlaylist } = require("../services/playlists");
 const { body, validationResult } = require("express-validator");
 const { errorParser } = require("../util");
-const { checkSongId, getSongById } = require("../services/songs");
+const { checkSongId, getSongById, serachInPlaylist } = require("../services/songs");
 
 const playlistRouter = Router();
 
@@ -86,10 +86,24 @@ playlistRouter.get("/playlists/:id/add", isUser(), async(req, res) => {
     };
     let songs = await getTheRestSongs(id);
     let playlist = await getPlaylistById(id).lean();
-    songs.forEach(el => el.playlistId = playlist._id);
     res.render("addSong", { songs, playlist });
 
 });
+
+playlistRouter.get("/playlists/:id/add/search", isUser(), async(req, res) => {
+    let id = req.params.id;
+    let isValid = await checkPlaylistId(id);
+    if (!isValid) {
+        res.render("404");
+        return;
+    };
+    let query = req.query;
+    let songs = await serachInPlaylist(query, id);
+    let playlist = await getPlaylistById(id).lean();
+    songs.forEach(el => el.playlistId = playlist._id);
+    res.render("addSong", { songs, playlist });
+})
+
 
 playlistRouter.get("/playlists/:playlistId/add/:songId", isUser(), async(req, res) => {
     let playlistId = req.params.playlistId;
