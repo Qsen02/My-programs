@@ -16,6 +16,14 @@ const bascketSchema = new mongoose.Schema({
     description: {
         type: String,
         require: true
+    },
+    ownerId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Users"
+    },
+    likes: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Users"
     }
 })
 
