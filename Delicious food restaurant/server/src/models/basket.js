@@ -19,8 +19,8 @@ const bascketSchema = new mongoose.Schema({
     }
 })
 
-const Bascket = mongoose.model("Basket", bascketSchema);
+const Basket = mongoose.model("Basket", bascketSchema);
 
 module.exports = {
-    Bascket
+    Basket
 }
