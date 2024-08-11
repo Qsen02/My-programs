@@ -18,6 +18,16 @@ const userShcema = new mongoose.Schema({
     address: {
         type: String,
         require: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    orderHistory: {
+        type: [
+            [Object]
+        ],
+        default: []
     }
 })
 

@@ -23,7 +23,8 @@ const dishesSchema = new mongoose.Schema({
     },
     likes: {
         type: [mongoose.SchemaTypes.ObjectId],
-        ref: "Users"
+        ref: "Users",
+        default: []
     }
 })
 
