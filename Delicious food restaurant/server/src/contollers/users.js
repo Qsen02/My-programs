@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const { body, validationResult } = require("express-validator");
+const { body, validationResult, check } = require("express-validator");
 const { errorParser } = require("../utils");
-const { register, login } = require("../services/users");
+const { register, login, checkUserId, getUserById } = require("../services/users");
 const { setToken } = require("../services/token");
 
 const userRouter = Router();
@@ -48,6 +48,18 @@ userRouter.post("/login",
 userRouter.get("/logout", (req, res) => {
     res.status(200).json({ message: "Logout was succesfull!" });
 })
+
+userRouter.get("/:userId", async(req, res) => {
+    const userId = req.params.userId;
+    const isValid = await checkUserId(userId);
+    if (!isValid) {
+        res.status(404).json({ message: "Resource not found!" });
+        return;
+    }
+    const user = await getUserById(userId).lean();
+    res.json(user);
+})
+
 module.exports = {
     userRouter
 }
