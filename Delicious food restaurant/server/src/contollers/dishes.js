@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { getAllDishes, checkDishId, getDishById, getNextDishes, searchDishes, createDish, deleteDish, editDish, likeDish, unlikeDish } = require("../services/dishes");
 const { body, validationResult } = require("express-validator");
 const { errorParser } = require("../utils");
+const { isUser } = require("../middlewares/guard");
 
 const dishesRouter = Router();
 
@@ -38,6 +39,7 @@ dishesRouter.get("/search/:query", async(req, res) => {
 })
 
 dishesRouter.post("/",
+    isUser(),
     body("title").isLength({ min: 3 }).withMessage("Title must be at least 3 characters long!"),
     body("price").isNumeric({ min: 0 }).withMessage("Price must be positive number!"),
     body("category").isLength({ min: 3 }).withMessage("Category must be at least 3 characters long!"),
@@ -63,7 +65,7 @@ dishesRouter.post("/",
         }
     })
 
-dishesRouter.delete("/:dishId", async(req, res) => {
+dishesRouter.delete("/:dishId", isUser(), async(req, res) => {
     const dishId = req.params.dishId;
     const isValid = await checkDishId(dishId);
     if (!isValid) {
@@ -74,6 +76,7 @@ dishesRouter.delete("/:dishId", async(req, res) => {
 })
 
 dishesRouter.put("/:dishId",
+    isUser(),
     body("title").isLength({ min: 3 }).withMessage("Title must be at least 3 characters long!"),
     body("price").isNumeric({ min: 0 }).withMessage("Price must be positive number!"),
     body("category").isLength({ min: 3 }).withMessage("Category must be at least 3 characters long!"),
@@ -103,7 +106,7 @@ dishesRouter.put("/:dishId",
         }
     })
 
-dishesRouter.post("/:dishId/like", async(req, res) => {
+dishesRouter.post("/:dishId/like", isUser(), async(req, res) => {
     const dishId = req.params.dishId;
     const isValid = await checkDishId(dishId);
     const user = req.user;
@@ -114,7 +117,7 @@ dishesRouter.post("/:dishId/like", async(req, res) => {
     res.status(200).json({ message: "Record liked successsfully" });
 })
 
-dishesRouter.post("/:dishId/unlike", async(req, res) => {
+dishesRouter.post("/:dishId/unlike", isUser(), async(req, res) => {
     const dishId = req.params.dishId;
     const isValid = await checkDishId(dishId);
     const user = req.user;

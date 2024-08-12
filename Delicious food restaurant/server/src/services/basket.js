@@ -16,6 +16,10 @@ async function removeFromBasket(dishId) {
     await Basket.findByIdAndDelete(dishId);
 }
 
+async function cancelOrder() {
+    await Basket.deleteMany();
+}
+
 function getFromBasketById(id) {
     const dish = Basket.findById(id);
     return dish;
@@ -23,7 +27,11 @@ function getFromBasketById(id) {
 
 async function ordering(userId) {
     const dishes = await Basket.find().lean();
+    if (dishes.length == 0) {
+        throw new Error("Basket is empty!");
+    }
     await Users.findByIdAndUpdate(userId, { $push: { orderHistory: dishes } });
+    await Basket.deleteMany();
 }
 
 async function checkFromBasketId(id) {
@@ -39,6 +47,7 @@ module.exports = {
     getAllFromBasket,
     getFromBasketById,
     addToBasket,
+    cancelOrder,
     removeFromBasket,
     ordering,
     checkFromBasketId
