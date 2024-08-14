@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const { getAllDishes, checkDishId, getDishById, getNextDishes, searchDishes, createDish, deleteDish, editDish, likeDish, unlikeDish } = require("../services/dishes");
 const { body, validationResult } = require("express-validator");
-const { errorParser } = require("../utils");
 const { isUser } = require("../middlewares/guard");
 
 const dishesRouter = Router();
@@ -40,11 +39,11 @@ dishesRouter.get("/search/:query", async(req, res) => {
 
 dishesRouter.post("/",
     isUser(),
-    body("title").isLength({ min: 3 }).withMessage("Title must be at least 3 characters long!"),
-    body("price").isNumeric({ min: 0 }).withMessage("Price must be positive number!"),
-    body("category").isLength({ min: 3 }).withMessage("Category must be at least 3 characters long!"),
-    body("image").matches(/^https?:\/\//).withMessage("Image must be valid URL!"),
-    body("description").isLength({ min: 10, max: 200 }).withMessage("Description must be between 10 and 200 characters long!"),
+    body("title").isLength({ min: 3 }),
+    body("price").isNumeric({ min: 0 }),
+    body("category").isLength({ min: 3 }),
+    body("image").matches(/^https?:\/\//),
+    body("description").isLength({ min: 10, max: 200 }),
     async(req, res) => {
         const fields = req.body;
         const title = fields.title;
@@ -56,12 +55,12 @@ dishesRouter.post("/",
         try {
             const results = validationResult(req);
             if (results.errors.length) {
-                throw results.errors;
+                throw new Error("Your data aren't in valid format");
             }
             const newDish = await createDish({ title, price, category, image, description }, user);
             res.status(200).json(newDish);
         } catch (err) {
-            res.status(400).json({ message: JSON.stringify(errorParser(err).errors) });
+            res.status(400).json({ message: err.message });
         }
     })
 
@@ -77,11 +76,11 @@ dishesRouter.delete("/:dishId", isUser(), async(req, res) => {
 
 dishesRouter.put("/:dishId",
     isUser(),
-    body("title").isLength({ min: 3 }).withMessage("Title must be at least 3 characters long!"),
-    body("price").isNumeric({ min: 0 }).withMessage("Price must be positive number!"),
-    body("category").isLength({ min: 3 }).withMessage("Category must be at least 3 characters long!"),
-    body("image").matches(/^https?:\/\//).withMessage("Image must be valid URL!"),
-    body("description").isLength({ min: 10, max: 200 }).withMessage("Description must be between 10 and 200 characters long!"),
+    body("title").isLength({ min: 3 }),
+    body("price").isNumeric({ min: 0 }),
+    body("category").isLength({ min: 3 }),
+    body("image").matches(/^https?:\/\//),
+    body("description").isLength({ min: 10, max: 200 }),
     async(req, res) => {
         const fields = req.body;
         const title = fields.title;
@@ -97,12 +96,12 @@ dishesRouter.put("/:dishId",
         try {
             const results = validationResult(req);
             if (results.errors.length) {
-                throw results.errors;
+                throw new Error("Your data aren't in valid format");
             }
             await editDish(dishId, { title, price, category, image, description });
             res.status(200).json({ message: "Record edited successsfully!" });
         } catch (err) {
-            res.status(400).json({ message: JSON.stringify(errorParser(err).errors) });
+            res.status(400).json({ message: err.message });
         }
     })
 
