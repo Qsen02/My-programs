@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { body, validationResult } = require("express-validator");
 const { register, login, checkUserId, getUserById } = require("../services/users");
 const { setToken } = require("../services/token");
+const { createBasket, removeBasket } = require("../services/basket");
 
 const userRouter = Router();
 
@@ -20,6 +21,7 @@ userRouter.post("/register",
             }
             const user = await register(fields.username, fields.email, fields.password, fields.address);
             const token = setToken(user);
+            await createBasket(user);
             res.json({ _id: user._id, username: user.username, email: user.email, address: user.address, accessToken: token });
         } catch (err) {
             res.status(400).json({ message: err.message });
@@ -38,14 +40,17 @@ userRouter.post("/login",
             }
             const user = await login(fields.username, fields.password);
             const token = setToken(user);
+            await createBasket(user);
             res.json({ _id: user._id, username: user.username, email: user.email, address: user.address, accessToken: token });
         } catch (err) {
             res.status(400).json({ message: err.message });
         }
     });
 
-userRouter.get("/logout", (req, res) => {
+userRouter.get("/logout", async(req, res) => {
+    const user = req.user;
     res.status(200).json({ message: "Logout was succesfull!" });
+    await removeBasket(user);
 })
 
 userRouter.get("/:userId", async(req, res) => {

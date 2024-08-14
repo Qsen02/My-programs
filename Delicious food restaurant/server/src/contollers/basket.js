@@ -1,52 +1,65 @@
 const { Router } = require("express");
-const { getAllFromBasket, addToBasket, removeFromBasket, getFromBasketById, ordering, checkFromBasketId, cancelOrder } = require("../services/basket");
+const { addToBasket, removeFromBasket, getBasketById, ordering, checkBasketId, cancelOrder, createBasket } = require("../services/basket");
 const { isUser } = require("../middlewares/guard");
 
 const basketRouter = Router();
 
-basketRouter.get("/", isUser(), async(req, res) => {
-    const basketDishes = await getAllFromBasket().lean();
-    res.json(basketDishes);
+basketRouter.get("/:basketId", isUser(), async(req, res) => {
+    const id = req.params.basketId;
+    const isValid = await checkBasketId(id);
+    if (!isValid) {
+        return res.status(404).json({ message: "Resource not found!" });
+    }
+    const basket = await getBasketById(id).lean();
+    res.json(basket);
 })
 
-basketRouter.post("/", isUser(), async(req, res) => {
+basketRouter.put("/:basketId", isUser(), async(req, res) => {
+    const id = req.params.basketId;
     const data = req.body;
-    const newDishInBasket = await addToBasket(data);
+    const newDishInBasket = await addToBasket(id, data);
     res.json(newDishInBasket);
 })
 
-basketRouter.delete("/:dishId", isUser(), async(req, res) => {
+basketRouter.delete("/dishId/from/basketId", isUser(), async(req, res) => {
     const dishId = req.params.dishId;
-    const isValid = await checkFromBasketId(dishId);
-    if (!isValid) {
+    const basketId = req.params.basketId;
+    const isBasketValid = await checkBasketId(basketId);
+    if (!isBasketValid) {
         return res.status(404).json({ message: "Resource not found!" });
     }
-    await removeFromBasket(dishId);
+    const isDishValid = await checkBasketId(dishId);
+    if (!isDishValid) {
+        return res.status(404).json({ message: "Resource not found!" });
+    }
+    await removeFromBasket(basketId, dishId);
     res.status(200).json({ message: "Record remove from basket successfully" });
 })
 
-basketRouter.get("/:dishId", isUser(), async(req, res) => {
-    const dishId = req.params.dishId;
-    const isValid = await checkFromBasketId(dishId);
+basketRouter.get("/:basketId", isUser(), async(req, res) => {
+    const basketId = req.params.basketId;
+    const isValid = await checkBasketId(basketId);
     if (!isValid) {
         return res.status(404).json({ message: "Resource not found!" });
     }
-    const dish = await getFromBasketById(dishId).lean();
+    const dish = await getBasketById(basketId).lean();
     res.json(dish);
 })
 
-basketRouter.post("/order", isUser(), async(req, res) => {
+basketRouter.post("/order/:basketId", isUser(), async(req, res) => {
+    const id = req.params.basketId;
     const user = req.user;
     try {
-        await ordering(user._id);
+        await ordering(id, user._id);
         res.status(200).json({ message: "Order was successfull!" });
     } catch (err) {
         res.status(400).json({ message: JSON.stringify(errorParser(err).errors) });
     }
 })
 
-basketRouter.post("/cancel", isUser(), async(req, res) => {
-    await cancelOrder();
+basketRouter.post("/cancel/:basketId", isUser(), async(req, res) => {
+    const id = req.params.basketId;
+    await cancelOrder(id);
     res.status(200).json({ message: "Order was canceled successfully" });
 })
 

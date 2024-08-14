@@ -24,9 +24,8 @@ const userShcema = new mongoose.Schema({
         default: false
     },
     orderHistory: {
-        type: [
-            [Object]
-        ],
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Basket",
         default: []
     }
 })
