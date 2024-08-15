@@ -1,51 +1,48 @@
-const bcrypt = require("bcrypt");
 const { Users } = require("../models/users");
+const bcrypt = require("bcrypt");
 
-async function register(username, email, password, address) {
-    const userUsername = await Users.findOne({ username: username }).lean();
+async function register(username, email, password) {
+    let userUsername = await Users.findOne({ username }).lean();
     if (userUsername) {
         throw new Error("This username is already taken!");
     }
-    const userEmail = await Users.findOne({ email: email }).lean();
+    let userEmail = await Users.findOne({ email }).lean();
     if (userEmail) {
         throw new Error("This email is already taken!");
     }
-    const payload = {
-        email: email,
+    let newUser = Users({
         username: username,
-        password: await bcrypt.hash(password, 10),
-        address: address
-    }
-    const user = new Users(payload);
-    await user.save();
-    return payload;
+        email: email,
+        password: await bcrypt.hash(password, 10)
+    })
+    newUser.save();
+    return newUser;
 }
 
 async function login(username, password) {
-    const user = await Users.findOne({ username: username }).lean();
+    let user = await Users.findOne({ username }).lean();
     if (!user) {
-        throw new Error("Username or password dont't match");
+        throw new Error("Username or password don't match!");
     }
-    const userPassword = await bcrypt.compare(password, user.password);
-    if (!userPassword) {
-        throw new Error("Username or password dont't match");
+    let isVaildPass = await bcrypt.compare(password, user.password);
+    if (!isVaildPass) {
+        throw new Error("Username or password don't match!");
     }
-
     return user;
 }
 
-function getUserById(userId) {
-    const user = Users.findById(userId);
+function getUserById(id) {
+    let user = Users.findById(id);
     return user;
 }
 
-async function checkUserId(userId) {
-    const users = await Users.find().lean();
-    const isValid = users.find(el => el._id.toString() == userId);
-    if (isValid) {
-        return true;
+async function checkUserId(id) {
+    let users = await Users.find().lean();
+    let isValid = users.find(el => el._id.toString() == id);
+    if (!isValid) {
+        return false;
     }
-    return false;
+    return true;
 }
 
 module.exports = {

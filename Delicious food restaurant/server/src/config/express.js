@@ -1,9 +1,9 @@
 const express = require("express");
-const { cors } = require("../middlewares/cors");
-const { session } = require("../middlewares/session");
+const { session } = require("../middlewears/session");
+const { setCors } = require("../middlewears/cors");
 
 function expressConfig(app) {
-    app.use(cors());
+    app.use(setCors());
     app.use(session());
     app.use(express.json());
 }

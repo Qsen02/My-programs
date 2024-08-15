@@ -1,24 +1,22 @@
 let mongoose = require("mongoose");
 
-let usersSchema = new mongoose.Schema({
+let commentSchema = new mongoose.Schema({
     username: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
-    email: {
+    content: {
         type: String,
         require: true,
-        unique: true
     },
-    password: {
+    gameId: {
         type: String,
         require: true
     }
-})
+});
 
-let Users = mongoose.model("Users", usersSchema);
+let Comments = mongoose.model("Comments", commentSchema);
 
 module.exports = {
-    Users
+    Comments
 }

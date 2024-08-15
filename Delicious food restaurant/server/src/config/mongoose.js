@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
+let mongoose = require("mongoose");
 const { Users } = require("../models/users");
-const { Dishes } = require("../models/dishes");
-const { Basket } = require("../models/basket");
+const { Games } = require("../models/games");
+const { Comments } = require("../models/comments");
+
+const localDB = "mongodb://localhost:27017/Gaming-club"
 
 async function runDB() {
-    await mongoose.connect("mongodb://localhost:27017/delicious-food-restaurant");
+    await mongoose.connect(localDB);
     console.log("Database connected");
 }
 

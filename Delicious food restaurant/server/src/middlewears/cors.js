@@ -1,4 +1,4 @@
-function cors() {
+function setCors() {
     return function(req, res, next) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, DELETE, POST");
@@ -8,5 +8,5 @@ function cors() {
 }
 
 module.exports = {
-    cors
+    setCors
 }
