@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EEE;
+    font-family: Lato, sans-serif;
+}
+
+.container {
+    width: 75vw;
+    background-color: rgb(231, 231, 231);
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 30px;
+    border-top: 1px solid silver;
+    border-left: 2px solid silver;
+    border-right: 2px solid silver;
+    border-bottom: 5px solid silver;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row14,
+.row12,
+.row7 {
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.row7>button,
+.row12>button,
+.row14>button {
+    flex-grow: 1;
+}
+
+.row7>.space {
+    flex: 0 0 40%;
+    margin: 0 auto;
+}
+
+button {
+    background-color: white;
+    border-top: 1px solid rgb(213, 211, 211);
+    border-left: 2px solid rgb(213, 211, 211);
+    border-right: 2px solid rgb(213, 211, 211);
+    border-bottom: 5px solid rgb(213, 211, 211);
+    border-radius: 7px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+.lightgrey {
+    background-color: rgb(238, 234, 234);
+}
+
+button:hover,
+.enter:hover {
+    background-color: grey;
+}
+
+textarea {
+    display: block;
+    width: 50vw;
+    height: 200px;
+    margin: 30px auto;
+    border-radius: 10px;
+    font-size: 16pt;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
