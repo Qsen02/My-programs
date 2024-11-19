@@ -70,12 +70,12 @@ function start() {
         ) {
             modal.style.visibility = "visible";
             resultScore.textContent=`Your scores: ${score}`;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             newGameBtn.addEventListener("click", startNewGame);
         }
     }
 
     function startNewGame() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         score = 0;
         lastKey = "";
         appleCoord.x = Math.floor(Math.random() * 1150);
