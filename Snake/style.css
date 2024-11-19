@@ -1,0 +1,65 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:30px;
+}
+
+canvas{
+    border: 2px solid black;
+    width: 1200px;
+    height: 800px;
+    background:url("images/background-grass.jpg");
+}
+
+img{
+   width: 50px;
+   height: 50px;
+   visibility: collapse;
+}
+
+.modal {
+    visibility: collapse;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2000px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+section{
+    width: 300px;
+    border-radius: 20px;
+    background-color: rgb(69, 69, 69);
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section button{
+    padding: 10px 20px 10px 20px;
+    color: white;
+    background-color: rgb(3, 137, 255);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+section button:hover{
+    background-color: rgb(98, 182, 255);;
+}
